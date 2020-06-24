@@ -11,10 +11,19 @@
         <div class="header1">
             <img src="../assets/img/FBI.png" alt="logo">
             <div>
-                <h1>Federal Bureau of Investigation</h1>
+                <h1 class="title">Federal Bureau of Investigation</h1>
+                <p>Authorized personal only</p>
             </div>
         </div>
-    
     </header>
+    <div class="container">
+    <h2>Employee Police Database</h2>
+    <label for="login">Login :</label>
+    <input name="login" type="text">
+    <label for="pass">Password :</label>
+    <input name="pass" type="password">
+    
+    
+    </div>
 </body>
 </html>
