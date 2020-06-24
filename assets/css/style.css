@@ -1,3 +1,8 @@
+body{
+    margin: 0 auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .header1{
     display: inline-block;
 }
