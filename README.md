@@ -1,4 +1,4 @@
-# Police Employee Tracker System ![Latest Release](https://img.shields.io/docker/v/TeeRa0ne/PoliceEmployeeTrackerSystem)
+# Police Employee Tracker System ![Latest Release](https://img.shields.io/badge/Info-In%20developpement-blue)
 
 A Police website for control police employee of Garry's Mod
 
