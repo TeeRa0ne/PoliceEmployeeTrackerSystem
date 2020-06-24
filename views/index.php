@@ -6,6 +6,14 @@
     <title>Police Employee System</title>
 </head>
 <body>
+    <header>
+        <div class="header1">
+            <img src="~/assets/img/FBI.png" alt="logo">
+            <div>
+                <h1>Federal Bureau of Investigation</h1>
+            </div>
+        </div>
     
+    </header>
 </body>
 </html>
