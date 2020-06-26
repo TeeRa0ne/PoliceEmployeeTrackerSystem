@@ -1,40 +1,17 @@
-<?php
-    session_start();
-    define('LOGIN', 'admin');
-    define('PWD', 'azerty');
-    
-    if (!empty($_POST)) {
-        if ($_POST['login'] == LOGIN) {
-            if ($_POST['pwd'] == PWD) {
-               $_SESSION['connection'] = TRUE;
-               header('location: page2.php');
-               exit;
-            }
-        }else
-        {
-            echo "<div class=.error.>
-            Login or password is incorect !
-          </div>";
-        }
-    }
-    
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Police Employee System</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/search.css">
 </head>
 <body>
     <header class="global">
         <div class="header1">
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
-            <p>Authorized personal only</p>
+            <p>Access Granted</p>
         </div>
     </header>
     <div class="background">
@@ -49,9 +26,8 @@
                     <input name="pass" type="password">
                 </div>
             </form>   
-            <div class="adminpanel-signin">
-                <a href="adminpanel.php">Admin Panel</a>
-                <button class="button-submit" type="submit">Submit</button>
+            <div class="search">
+                <button class="button-submit" type="submit">Search</button>
             </div>
         </div>
     </div>
