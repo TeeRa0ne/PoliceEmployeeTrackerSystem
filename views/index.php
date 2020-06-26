@@ -17,10 +17,15 @@
     <div class="background">
         <div class="container">
             <h2>Employee Police Database</h2>
-            <label for="login">Login :</label>
-            <input name="login" type="text">
-            <label for="pass">Password :</label>
-            <input name="pass" type="password">   
+            <form method="post">
+                <div class="form1">
+                    <label for="login">Login :</label>
+                    <input name="login" type="text">
+                    <br>
+                    <label for="pass">Password :</label>
+                    <input name="pass" type="password">
+                </div>
+            </form>   
             <div class="adminpanel-signin">
                 <a href="adminpanel.php">Admin Panel</a>
                 <button class="button-submit" type="submit">Submit</button>

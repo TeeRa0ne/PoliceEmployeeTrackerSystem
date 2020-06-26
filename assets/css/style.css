@@ -11,6 +11,7 @@ body{
 }
 
 .header1{
+    display: inline;
     background-color: black;
 }
 
@@ -28,11 +29,19 @@ h2{
 }
 
 .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-image: url(../img/background-container.png);
     color: white;
     text-align: center;
-    width: 400px;
+    width: 600px;
+    height: 500px;
     margin: 0 auto;
+}
+
+.form1{
+    align-items: baseline;
 }
 
 p{
