@@ -17,7 +17,7 @@
     <div class="background">
         <div class="container">
             <h2>Employee Police Database</h2>
-            <label class="login" for="login">Login :</label>
+            <label for="login">Login :</label>
             <input name="login" type="text">
             <label for="pass">Password :</label>
             <input name="pass" type="password">   
