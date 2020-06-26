@@ -7,7 +7,7 @@
         if ($_POST['login'] == LOGIN) {
             if ($_POST['pwd'] == PWD) {
                $_SESSION['connection'] = TRUE;
-               header('location: page2.php');
+               header('location: search.php');
                exit;
             }
         }else
@@ -37,6 +37,7 @@
             <p>Authorized personal only</p>
         </div>
     </header>
+    <hr>
     <div class="background">
         <div class="container">
             <h2>Employee Police Database</h2>
