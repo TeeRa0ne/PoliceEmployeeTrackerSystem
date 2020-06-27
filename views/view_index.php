@@ -1,25 +1,36 @@
 <?php
-    session_start();
-    define('LOGIN', 'admin');
-    define('PWD', 'azerty');
+
+require '../assets/Services/db.php';
+
+session_start();
+if(isset($_POST['username']) && isset($_POST['pwd']))
+{
+   
+    // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
+    // pour éliminer toute attaque de type injection SQL et XSS
+    $username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
+    $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['pwd']));
     
-    if (!empty($_POST)) {
-        if ($_POST['login'] == LOGIN) {
-            if ($_POST['pwd'] == PWD) {
-               $_SESSION['connection'] = TRUE;
-               header('location: search.php');
-               exit;
-            }
-        }else
+    if($username !== "" && $password !== "")
+    {
+        $requete = "SELECT count(*) FROM users where 
+              username = '".$username."' and pwd = '".$password."' ";
+        $exec_requete = mysqli_query($db,$requete);
+        $reponse      = mysqli_fetch_array($exec_requete);
+        $count = $reponse['count(*)'];
+        if($count!=0) // nom d'utilisateur et mot de passe correctes
         {
-            echo "<div class=.error.>
-            Login or password is incorect !
-          </div>";
+           $_SESSION['username'] = $username;
+           header('Location: Search.php');
+        }
+        else
+        {
+           header('Location: view_index.php?erreur=1'); // utilisateur ou mot de passe incorrect
         }
     }
-    
-
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,17 +54,24 @@
             <h2>Employee Police Database</h2>
             <form method="post">
                 <div class="form1">
-                    <label for="login">Login :</label>
-                    <input name="login" type="text">
+                    <label for="username">Username :</label>
+                    <input for="username" name="username" type="text">
                     <br>
-                    <label for="pass">Password :</label>
-                    <input name="pass" type="password">
+                    <label for="pwd">Password :</label>
+                    <input for="pwd" name="pwd" type="password">
                 </div>
-            </form>   
             <div class="adminpanel-signin">
                 <a href="adminpanel.php">Admin Panel</a>
-                <button class="button-submit" type="submit">Submit</button>
+                <button class="button-submit" type="submit" value="submit">Submit</button>
             </div>
+            <?php
+                if(isset($_GET['erreur'])){
+                    $err = $_GET['erreur'];
+                    if($err==1)
+                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                }
+                ?>
+            </form>   
         </div>
     </div>
 </body>
