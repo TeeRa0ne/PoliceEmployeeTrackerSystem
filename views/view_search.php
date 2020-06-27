@@ -19,11 +19,11 @@
             <h2>Employee Police Database</h2>
             <form method="post">
                 <div class="form1">
-                    <label for="login">Login :</label>
-                    <input name="login" type="text">
+                    <label for="nameuser">Search By Name :</label>
+                    <input for="nameuser" name="nameuser" type="text">
                     <br>
-                    <label for="pass">Password :</label>
-                    <input name="pass" type="password">
+                    <label for="rank">Search By Rank :</label>
+                    <input for="rank" name="rank" type="password">
                 </div>
             </form>   
             <div class="search">

@@ -15,6 +15,15 @@ body{
     100%{box-shadow:0px 0px 10px green;}
 }
 
+.logo{
+    width: 150px;
+}
+
+
+h2{
+    color: white;
+    font-size: 45px;
+}
 
 p{
     color: white;
