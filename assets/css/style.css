@@ -15,6 +15,7 @@ body{
     flex-direction: row;
     align-items: center;
     background-color: black;
+    margin-top: 10px;
 }
 
 .title{
@@ -30,6 +31,10 @@ h2{
     font-size: 45px;
 }
 
+hr{
+    margin: 0px;
+}
+
 
 .container{
     display: flex;
@@ -41,10 +46,15 @@ h2{
     width: 600px;
     height: 500px;
     margin: 0 auto;
+    margin-top: 15px;
+
 }
 
-.form1{
-    align-items: baseline;
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 150px;    
+
 }
 
 p{
