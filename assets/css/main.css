@@ -75,7 +75,7 @@ p{
     line-height:65px;
 }
 
-.button-submit{
+/* .button-submit{
     color: white;
     border-radius:12px 0 12px 0;
 	background: green;
@@ -83,11 +83,35 @@ p{
 	font:bold 12px Verdana;
 	padding:6px 0 6px 0;
 	box-shadow:1px 1px 3px #999;
-}
+} */
 
 a{
     color: white;
 }
+
+.adminpanel-singin{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 120px;
+}
+
+.button-submit {
+	box-shadow: 0px 10px 14px -7px #3e7327;
+	background:linear-gradient(to bottom, #3aad00 5%, #54fc00 100%);
+	background-color:#3aad00;
+	border-radius:4px;
+	border:1px solid #4b8f29;
+	cursor:pointer;
+	color:#fafafa;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #5b8a3c;
+}
+.button-submit:hover {
+	background:linear-gradient(to bottom, #54fc00 5%, #3aad00 100%);
+	background-color:#54fc00;
+}
+
 
 @-webkit-keyframes clignote {
     0%{box-shadow:0px 0px 10px red;}
