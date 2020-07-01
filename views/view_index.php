@@ -43,7 +43,7 @@ if(isset($_POST['username']) && isset($_POST['pwd']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Police Employee System</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
     <header class="global">
