@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+/* For change the background */
 html{
     background-image: url(../img/6Ya1Nyb.png);
 }
@@ -118,3 +119,7 @@ a{
     100%{box-shadow:0px 0px 10px red;}
 }
 
+li a{
+    padding: 5px;
+    text-decoration: none;
+}

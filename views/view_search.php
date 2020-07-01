@@ -12,8 +12,8 @@
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
             <p>Access Granted</p>
-            <button class="button-admin" type="submit" value="submit">Admin Panel</button>
         </div>
+        <div><a href="../views/adminpanel">Admin Panel</a></div>
     </header>
     <div class="background">
         <div class="container">
@@ -24,7 +24,7 @@
                     <input for="nameuser" name="nameuser" type="text">
                     <br>
                     <label for="rank">Search By Rank :</label>
-                    <input for="rank" name="rank" type="password">
+                    <input for="rank" name="rank" type="text">
                 </div>
             </form>   
             <div class="search">

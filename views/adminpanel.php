@@ -12,9 +12,19 @@
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
             <div>
-                <p>Authorized personal only</p>
+                <p>Administrator</p>
             </div>
         </div>
     </header>
+    <hr>
+    <div class="container">
+    <h2>Administration Panel</h2>
+    <ul class="list-com">
+        <li><a href="#">Add new employee</a></li>
+        <li><a href="#">Edit existing employee</a></li>
+        <li><a href="#">Remove a employee</a></li>
+        <li><a href="#">List of employee</a></li>
+    </ul>
+    </div>
 </body>
 </html>

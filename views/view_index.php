@@ -31,9 +31,6 @@ if(isset($_POST['username']) && isset($_POST['pwd']))
 }
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,20 +55,18 @@ if(isset($_POST['username']) && isset($_POST['pwd']))
             <h2>Employee Police Database</h2>
             <form method="post">
                 <div class="form1">
-                    <center>
-                        <div class="login">
-                            <label for="username">Username :</label>
-                            <input for="username" name="username" type="text">
-                        </div>
-                        <br>
-                        <div class="password">
-                            <label for="pwd">Password :</label>
-                            <input for="pwd" name="pwd" type="password">
-                        </div>
-                    </center>
+                    <div class="login">
+                        <label for="username">Username :</label>
+                        <input for="username" name="username" type="text">
+                    </div>
+                    <br>
+                    <div class="password">
+                        <label for="pwd">Password :</label>
+                        <input for="pwd" name="pwd" type="password">
+                    </div>
                 </div>
             <div class="adminpanel-signin">
-                <button class="button-submit" type="submit" value="submit">Submit</button>
+                <button class="button-submit" type="submit" value="submit">Sign in</button>
             </div>
             <?php
                 if(isset($_GET['erreur'])){
