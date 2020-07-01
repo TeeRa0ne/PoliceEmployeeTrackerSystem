@@ -1,16 +1,11 @@
 <?php
 
+require '../assets/Services/db.php';
+
 session_start();
 if(isset($_POST['username']) && isset($_POST['pwd']))
 {
-        // connexion à la base de données
-        $db_username = 'root';
-        $db_password = '';
-        $db_name     = 'policeemployee';
-        $db_host     = 'localhost';
-        $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)
-               or die('could not connect to database');
-   
+    
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
     // pour éliminer toute attaque de type injection SQL et XSS
     $username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
@@ -37,12 +32,14 @@ if(isset($_POST['username']) && isset($_POST['pwd']))
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Police Employee System</title>
+    <title>Login - Police Employee System</title>
     <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
@@ -50,7 +47,9 @@ if(isset($_POST['username']) && isset($_POST['pwd']))
         <div class="header1">
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
-            <p>Authorized personal only</p>
+            <div>
+                <p>Authorized personal only</p>
+            </div>
         </div>
     </header>
     <hr>
@@ -72,8 +71,7 @@ if(isset($_POST['username']) && isset($_POST['pwd']))
                     </center>
                 </div>
             <div class="adminpanel-signin">
-                <a href="adminpanel.php">Admin Panel</a>
-                    <button class="button-submit" type="submit" value="submit">Submit</button>
+                <button class="button-submit" type="submit" value="submit">Submit</button>
             </div>
             <?php
                 if(isset($_GET['erreur'])){

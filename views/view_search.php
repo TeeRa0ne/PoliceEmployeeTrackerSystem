@@ -12,6 +12,7 @@
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
             <p>Access Granted</p>
+            <button class="button-admin" type="submit" value="submit">Admin Panel</button>
         </div>
     </header>
     <div class="background">
