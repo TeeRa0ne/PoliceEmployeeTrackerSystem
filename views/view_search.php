@@ -1,3 +1,18 @@
+<?php
+
+require '../controllers/search-controller.php';
+
+$user=NULL;
+
+if (isset($_SESSION['user'])) {
+    $user = new User;
+    $user->identifiant=$_SESSION['user'];
+    $user = $user->fetchByIdentifiant();
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +26,11 @@
         <div class="header1">
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
-            <p>Access Granted</p>
+            <p>Access Granted - <?php echo $rank; '-'; $last_name; $first_name;  ?></p>
         </div>
         <div><a href="../views/adminpanel">Admin Panel</a></div>
     </header>
+    <hr>
     <div class="background">
         <div class="container">
             <h2>Employee Police Database</h2>

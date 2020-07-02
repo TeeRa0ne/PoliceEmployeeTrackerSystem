@@ -43,8 +43,10 @@ if(isset($_POST['username']) && isset($_POST['pwd']))
     <header class="global">
         <div class="header1">
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
-            <h1 class="title">Federal Bureau of Investigation</h1>
             <div>
+                <h1 class="title">Federal Bureau of Investigation</h1>
+            </div>
+            <div style="padding-left: 10px;">
                 <p>Authorized personal only</p>
             </div>
         </div>
@@ -72,7 +74,7 @@ if(isset($_POST['username']) && isset($_POST['pwd']))
                 if(isset($_GET['erreur'])){
                     $err = $_GET['erreur'];
                     if($err==1)
-                        echo "<p>User or password is incorrect !</p>";
+                        echo "<p>Username or password is incorrect !</p>";
                 }
                 ?>
             </form>   
