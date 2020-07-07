@@ -20,7 +20,7 @@
     <div class="container">
     <h2>Administration Panel</h2>
     <ul class="list-com">
-        <li><a href="#">Add new employee</a></li>
+        <li><a href="../views/adminfunction/add.php">Add new employee</a></li>
         <li><a href="#">Edit existing employee</a></li>
         <li><a href="#">Remove a employee</a></li>
         <li><a href="#">List of employee</a></li>
