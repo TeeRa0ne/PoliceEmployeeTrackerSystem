@@ -3,9 +3,6 @@
 require '../controllers/search-controller.php';
 require '../assets/services/db.php';
 
-$name = "SELECT first_name, last_name FROM users WHERE username = ";
-
-
 
 ?>
 
@@ -30,7 +27,11 @@ $name = "SELECT first_name, last_name FROM users WHERE username = ";
                 }
             ?></p>
         </div>
+        <?php if ($permission_level > 5) {
+            
+            ?>
         <div><a href="../views/adminpanel">Admin Panel</a></div>
+        <?php } ?>
     </header>
     <hr>
     <div class="background">
