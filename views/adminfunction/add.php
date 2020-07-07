@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Police Employee Tracker System</title>
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/adminpanel.css">
 </head>
 <body>
     <header class="global">
@@ -45,7 +45,7 @@
                 <label for="male">Male</label><br>
                     <input type="radio" id="female" name="gender" value="female">
                 <label for="female">Female</label><br>
-                        
+
             </form>
         </div>
     </div>
