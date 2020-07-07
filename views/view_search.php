@@ -27,7 +27,7 @@ require '../assets/services/db.php';
                 }
             ?></p>
         </div>
-        <?php if ($permission_level > 5) {
+        <?php if ($perm > 5) {
             
             ?>
         <div><a href="../views/adminpanel">Admin Panel</a></div>
