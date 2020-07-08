@@ -3,7 +3,6 @@
 require '../controllers/search-controller.php';
 require '../assets/services/db.php';
 
-
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +26,7 @@ require '../assets/services/db.php';
                 }
             ?></p>
         </div>
-        <?php if ($perm > 5) {
+        <?php if ($permission_level > 5) {
             
             ?>
         <div><a href="../views/adminpanel">Admin Panel</a></div>
@@ -45,10 +44,8 @@ require '../assets/services/db.php';
                     <label for="rank">Search By Rank :</label>
                     <input for="rank" name="rank" type="text">
                 </div>
-            </form>   
-            <div class="search">
                 <button class="button-submit" type="submit">Search</button>
-            </div>
+            </form>   
         </div>
     </div>
 </body>
