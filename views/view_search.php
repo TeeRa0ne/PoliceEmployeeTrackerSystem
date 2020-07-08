@@ -4,10 +4,10 @@ require '../controllers/search-controller.php';
 require '../assets/services/db.php';
 
 
-$res = $db->prepare("SELECT * FROM users WHERE id=?");
-$res->bind_param("s", $id);
-$user = $res->mysqli_fetch_all(MYSQLI_ASSOC)[0];
-$res->free();
+$reponse = $bdd->prepare('SELECT permissions_level FROM users WHERE id=?');
+$reponse->execute(array($_GET['permissions_level']));
+
+
 
 
 ?>
@@ -33,7 +33,7 @@ $res->free();
                 }
             ?></p>
         </div>
-        <?php if ($permission_level > 5) {
+        <?php if ($donnee['permission_level'] = 5) {
             
             ?>
         <div><a href="../views/adminpanel">Admin Panel</a></div>

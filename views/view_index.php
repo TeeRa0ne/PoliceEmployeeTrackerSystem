@@ -3,31 +3,7 @@
 
 session_start();
  
- if(isset($_POST['username']) && isset($_POST['pwd']))
- {
-    
-     $username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
-     $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['pwd']));
-     
-     if($username !== "" && $password !== "")
-     {
-         $requete = "SELECT count(*) FROM users where 
-               username = '".$username."' and pwd = '".$password."' ";
-         $exec_requete = mysqli_query($db,$requete);
-         $reponse      = mysqli_fetch_array($exec_requete);
-         $count = $reponse['count(*)'];
-         if($count!=0) // nom d'utilisateur et mot de passe correctes
-         {
-            $_SESSION['username'] = $username;
-            header('Location: view_search.php');
-         }
-         else
-         {
-            header('Location: view_index.php?erreur=1'); // utilisateur ou mot de passe incorrect
-         }
-     }
- }
- 
+
 
 
 
@@ -73,7 +49,7 @@ session_start();
                     </div>
                 </div>
             <div class="adminpanel-signin">
-                <button class="button-submit" type="submit" value="submit">Sign in</button>
+                <button class="button-submit" type="submit" value="submit">Connect to the database</button>
             </div>
             <?php
                 if(isset($_GET['erreur'])){
