@@ -55,7 +55,7 @@ form {
 
 }
 
-p {
+.danger {
     color: white;
     background-color: red;
     font-weight: bold;
@@ -66,11 +66,8 @@ p {
     margin-left: 10px;
     box-shadow: 0px 0px 10px #4183C4;
     -webkit-animation-name: clignote;
-    /*on affecte l'animation clignote à notre bouton */
     -webkit-animation-duration: 1s;
-    /*on définit la durée de l'animation à 1s*/
     -webkit-animation-iteration-count: infinite;
-    /*on dit que l'animation se répétera à l'infini.*/
 }
 
 a {
@@ -138,4 +135,12 @@ h2{
 
 .gender{
     display: inline-block;
+}
+
+p{
+    color: white;
+}
+
+.box-employee{
+    
 }

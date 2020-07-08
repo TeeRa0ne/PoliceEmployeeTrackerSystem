@@ -46,7 +46,7 @@ require '../controllers/add-controller.php';
                 <label for="experience">Experience :</label>
                     <input name="experience" for="experience" type="text">
                     <br>
-                <label for="perm">Permission (For admin = 5) :</label>
+                <label for="perm">Permission 0 - 5 (For access to admin panel = 5) :</label>
                     <input name="perm" min="0" max="5" for="perm" type="number">
                     <br>
                 <label for="activeInactive">Active or Inactive :</label>
