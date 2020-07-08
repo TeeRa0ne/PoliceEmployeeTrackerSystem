@@ -3,6 +3,13 @@
 require '../controllers/search-controller.php';
 require '../assets/services/db.php';
 
+
+$res = $db->prepare("SELECT * FROM users WHERE id=?");
+$res->bind_param("s", $id);
+$user = $res->mysqli_fetch_all(MYSQLI_ASSOC)[0];
+$res->free();
+
+
 ?>
 
 <!DOCTYPE html>

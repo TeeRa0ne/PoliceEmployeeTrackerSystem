@@ -21,9 +21,11 @@
         <h2>Administration Panel</h2>
         <div class="button-list">
             <button onclick=window.location.href='../views/adminfunction/add.php'; class="button-submit" type="submit"><a>Add new employee</a></button>
-            <button onclick=window.location.href='../views/adminfunction/edit.php'; class="button-submit" type="submit"><a href="#">Edit existing employee</a></button>
-            <button onclick=window.location.href='../views/adminfunction/remove.php'; class="button-submit" type="submit"><a href="#">Remove a employee</a></button>
-            <button onclick=window.location.href='../views/adminfunction/list.php'; class="button-submit" type="submit"><a href="#">List of employee</a></button>
+        </div>
+        <div class="table-employee">
+            <table>
+                
+            </table>
         </div>
     </div>
 </body>
