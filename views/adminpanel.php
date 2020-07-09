@@ -14,7 +14,8 @@ $reponse->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Police Employee Tracker System</title>
     <link rel="stylesheet" href="../assets/css/adminpanel.css">
-    <link rel="stylesheet" href="../assets/Fontawesome/css/all.min.css" > 
+    <link rel="stylesheet" href="../assets/Fontawesome/css/all.css"> 
+    <script defer src="../assets/Fontawesome/js/all.js"></script>
 </head>
 <body>
     <header class="global">
@@ -37,8 +38,8 @@ $reponse->execute();
                 <p>First name</p>
                 <p>Last name</p>
                 <p>Rank</p>
-                <i style="color: white;" class="fas fa-times"></i>
-                <i style="color: white;"   class="fas fa-user-cog"></i>
+                <i class="fas fa-times"></i>
+                <i class="fas fa-user-cog"></i>
             </div>
             <?php
                 // while ($data = $reponse->fetch()) 
