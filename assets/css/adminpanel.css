@@ -152,3 +152,8 @@ p{
     margin-top: 17px;
 
 }
+
+.box-name{
+    padding: 5px;
+    border: 2px solid white;
+}

@@ -39,7 +39,7 @@ $reponse->execute();
             <?php
                 while ($data = $reponse->fetch()) 
                 {
-                    echo '<div>'.'<p>'. $data['first_name'] . '</p>'. 
+                    echo '<div class="box-name">'.'<p>'. $data['first_name'] . '</p>'. 
                     '<p>' . $data['last_name'] . '</p>' 
                     . '<p>' . $data['rank'] . '</p>' .
                     '<div class="icons-admin">

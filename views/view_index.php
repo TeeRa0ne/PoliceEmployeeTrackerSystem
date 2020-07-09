@@ -2,15 +2,38 @@
  require '../assets/services/db.php';
 
 session_start();
+
+
+
+//  Récupération de l'utilisateur et de son pass hashé
+$req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
+$req->execute(array(
+    'username' => $username));
+$resultat = $req->fetch();
+
+// Comparaison du pass envoyé via le formulaire avec la base
+$isPasswordCorrect = password_verify($_POST['pwd'], $resultat['pwd']);
+
+if (!$resultat)
+{
+    echo 'Wrong password or username.';
+}
+else
+{
+    if ($isPasswordCorrect) {
+        session_start();
+        $_SESSION['id'] = $resultat['id'];
+        $_SESSION['username'] = $username;
+        echo 'You are connected !';
+        sleep(5);
+        header('Location:../views/view_search.php');
+    }
+    else {
+       echo 'Wrong password or username.';
+    }
+}
  
-
-
-
-
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,13 +74,6 @@ session_start();
             <div class="adminpanel-signin">
                 <button class="button-submit" type="submit" value="submit">Connect to the database</button>
             </div>
-            <?php
-                if(isset($_GET['erreur'])){
-                    $err = $_GET['erreur'];
-                    if($err==1)
-                        echo "<p>Username or password is incorrect !</p>";
-                }
-                ?>
             </form>   
         </div>
     </div>

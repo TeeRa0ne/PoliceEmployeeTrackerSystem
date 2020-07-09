@@ -1,7 +1,22 @@
 <?php
 
-require '../controllers/add-controller.php';
+require '../assets/services/db.php';
 
+// Hachage du mot de passe
+$pass_hache = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
+
+// Insertion
+$req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, gender, active, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :gender, :active, :experience, :rank, :permissions_level, CURDATE())');
+$req->execute(array(
+    'username' => $username,
+    'pwd' => $pass_hache,
+    'firstname' => $first_name,
+    'lastname' => $last_name,
+    'gender' => $gender,
+    'active' => $activeInactive,
+    'experience' => $experience,
+    'rank' => $rank,
+    'permissions_level' => $perm));
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +61,11 @@ require '../controllers/add-controller.php';
                 <label for="experience">Experience :</label>
                     <input name="experience" for="experience" type="text">
                     <br>
-                <label for="perm">Permission 0 - 5 (For access to admin panel = 5) :</label>
+                <label for="perm">Permission Level 0 - 5 (For access to admin panel = 5) :</label>
                     <input name="perm" min="0" max="5" for="perm" type="number">
                     <br>
                 <label for="activeInactive">Active or Inactive :</label>
-                <select name="activeInactive" id="activeInactive" name="cars">
+                <select name="activeInactive" id="activeInactive">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
