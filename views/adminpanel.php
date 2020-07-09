@@ -13,7 +13,7 @@ $reponse->execute();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Police Employee Tracker System</title>
-    <link rel="stylesheet" href="../assets/css/adminpanel.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/adminpanel.css?<?php echo time(); ?>" >
     <link rel="stylesheet" href="../assets/Fontawesome/css/all.css"> 
     <script defer src="../assets/Fontawesome/js/all.js"></script>
 </head>
@@ -29,24 +29,26 @@ $reponse->execute();
     </header>
     <hr>
     <div class="container">
+    <button onclick=window.location.href='../views/view_search.php'; class="button-submit-back"> <- Back </button>
         <h2>Administration Panel</h2>
         <div class="button-list">
             <button onclick=window.location.href='../views/add.php'; class="button-submit" type="submit"><a>Add new employee</a></button>
         </div>
         <div class="table-employee">
             <div class="box-employee">
-                <p>First name</p>
-                <p>Last name</p>
-                <p>Rank</p>
-                <i class="fas fa-times"></i>
-                <i class="fas fa-user-cog"></i>
-            </div>
             <?php
-                // while ($data = $reponse->fetch()) 
-                // {
-                //     echo $data['first_name'] . ' ' . $data['last_name'] . ' - ' . $data['rank'] . '</br>';
-                // }
+                while ($data = $reponse->fetch()) 
+                {
+                    echo '<div>'.'<p>'. $data['first_name'] . '</p>'. 
+                    '<p>' . $data['last_name'] . '</p>' 
+                    . '<p>' . $data['rank'] . '</p>' .
+                    '<div class="icons-admin">
+                    <i class="fas fa-user-cog"></i>
+                    <i style="color: red;" class="fas fa-times"></i>
+                    </div>'. '</div>';
+                }
             ?>
+            </div>
         </div>
     </div>
 </body>

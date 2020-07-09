@@ -45,6 +45,7 @@ hr {
     width: 600px;
     margin: 0 auto;
     margin-top: 15px;
+    padding-bottom: 10px;
 
 }
 
@@ -142,5 +143,12 @@ p{
 }
 
 .box-employee{
-    
+    background-color: rgba(48, 48, 48, 0.466);
+    display: flex;
+    justify-content: space-around;
+}
+
+.icons-admin{
+    margin-top: 17px;
+
 }
