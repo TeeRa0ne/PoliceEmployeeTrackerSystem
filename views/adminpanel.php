@@ -14,7 +14,7 @@ $reponse->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Police Employee Tracker System</title>
     <link rel="stylesheet" href="../assets/css/adminpanel.css">
-    <script src="https://kit.fontawesome.com/9fe64c6d48.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/Fontawesome/css/all.min.css" > 
 </head>
 <body>
     <header class="global">
@@ -37,8 +37,8 @@ $reponse->execute();
                 <p>First name</p>
                 <p>Last name</p>
                 <p>Rank</p>
-                <i class="fas fa-times"></i>
-                <i class="fas fa-user-cog"></i>
+                <i style="color: white;" class="fas fa-times"></i>
+                <i style="color: white;"   class="fas fa-user-cog"></i>
             </div>
             <?php
                 // while ($data = $reponse->fetch()) 
