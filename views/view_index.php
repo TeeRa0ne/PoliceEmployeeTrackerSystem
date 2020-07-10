@@ -1,9 +1,9 @@
 <?php
  require '../assets/services/db.php';
 
-var_dump($_POST['username']);
 
- if (isset($_POST)) {
+ if (!empty($_POST)) {
+    var_dump($_POST);
     //  Récupération de l'utilisateur et de son pass hashé
     $req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
     $req->execute(array(
@@ -12,7 +12,7 @@ var_dump($_POST['username']);
 
     if (!$resultat)
     {
-        $error1 =  '<p>Wrong password or username.</p>';
+        $error =  '<p>Wrong password or username.</p>';
     }
     else
     {
@@ -26,7 +26,7 @@ var_dump($_POST['username']);
             header('Location:../views/view_search.php');
         }
         else {
-            $error2 =  '<p>Wrong password or username.</p>';
+            $error =  '<p>Wrong password or username.</p>';
             }
     }
 }
@@ -73,7 +73,11 @@ var_dump($_POST['username']);
                 <button class="button-submit" type="submit" value="submit">Connect to the database</button>
             </div>
             <?php
+            if (isset($_GET['error'])) {
+                
                 echo $error1;
+            }
+               
             ?>
             </form>   
         </div>
