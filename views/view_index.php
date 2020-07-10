@@ -1,38 +1,35 @@
 <?php
  require '../assets/services/db.php';
 
-session_start();
 
+ if (isset($_POST)) {
+    //  Récupération de l'utilisateur et de son pass hashé
+    $req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
+    $req->execute(array(
+        'username' => $_POST['username']));
+    $resultat = $req->fetch(PDO::FETCH_ASSOC);
 
-
-//  Récupération de l'utilisateur et de son pass hashé
-$req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
-$req->execute(array(
-    'username' => $username));
-$resultat = $req->fetch();
-
-// Comparaison du pass envoyé via le formulaire avec la base
-$isPasswordCorrect = password_verify($_POST['pwd'], $resultat['pwd']);
-
-if (!$resultat)
-{
-    echo 'Wrong password or username.';
-}
-else
-{
-    if ($isPasswordCorrect) {
-        session_start();
-        $_SESSION['id'] = $resultat['id'];
-        $_SESSION['username'] = $username;
-        echo 'You are connected !';
-        sleep(5);
-        header('Location:../views/view_search.php');
+    if (!$resultat)
+    {
+        $error1 =  '<p>Wrong password or username.</p>';
     }
-    else {
-       echo 'Wrong password or username.';
+    else
+    {
+        $isPasswordCorrect = password_verify($_POST['pwd'], $resultat['pwd']);
+        if ($isPasswordCorrect) {
+            session_start();
+            $_SESSION['id'] = $resultat['id'];
+            $_SESSION['username'] = $username;
+            echo 'You are connected !';
+            sleep(5);
+            header('Location:../views/view_search.php');
+        }
+        else {
+            $error2 =  '<p>Wrong password or username.</p>';
+            }
     }
 }
- 
+
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +71,9 @@ else
             <div class="adminpanel-signin">
                 <button class="button-submit" type="submit" value="submit">Connect to the database</button>
             </div>
+            <?php
+                echo $error1;
+            ?>
             </form>   
         </div>
     </div>
