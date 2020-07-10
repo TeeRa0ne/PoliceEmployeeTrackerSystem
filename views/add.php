@@ -8,15 +8,15 @@ $pass_hache = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 // Insertion
 $req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, gender, active, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :gender, :active, :experience, :rank, :permissions_level, CURDATE())');
 $req->execute(array(
-    'username' => $username,
-    'pwd' => $pass_hache,
-    'firstname' => $first_name,
-    'lastname' => $last_name,
-    'gender' => $gender,
-    'active' => $activeInactive,
-    'experience' => $experience,
-    'rank' => $rank,
-    'permissions_level' => $perm));
+    'username' => $_POST['username'],
+    'pwd' => $_POST['pwd'],
+    'firstname' => $_POST['firstname'],
+    'lastname' => $_POST['lastname'],
+    'gender' => $_POST['gender'],
+    'active' => $_POST['active'],
+    'experience' => $_POST['experience'],
+    'rank' => $_POST['rank'],
+    'permissions_level' => $_POST['permissions_level']));
 ?>
 
 <!DOCTYPE html>

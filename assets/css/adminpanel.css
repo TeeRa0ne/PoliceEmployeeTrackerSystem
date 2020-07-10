@@ -39,7 +39,7 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url(../img/background-container.png);
+    background-color: rgba(48, 48, 48, 0.466);
     color: white;
     text-align: center;
     width: 600px;

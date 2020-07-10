@@ -1,6 +1,7 @@
 <?php
  require '../assets/services/db.php';
 
+var_dump($_POST['username']);
 
  if (isset($_POST)) {
     //  Récupération de l'utilisateur et de son pass hashé
