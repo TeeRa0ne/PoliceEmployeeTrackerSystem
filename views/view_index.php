@@ -4,13 +4,13 @@
 
 
  if (!empty($_POST)) {
-    var_dump($_POST);
+    var_dump($isPasswordCorrect);
 
     $req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']));
     $resultat = $req->fetch(PDO::FETCH_ASSOC);
-    
+
     $isPasswordCorrect = password_verify($_POST['pwd'], $resultat['pwd']);
 
 
@@ -25,6 +25,7 @@
             $_SESSION['id'] = $resultat['id'];
             $_SESSION['username'] = $username;
             header('Location:../views/view_search.php');
+            die();
         }
         else {
             header('Location: view_index.php?erreur=2'); 

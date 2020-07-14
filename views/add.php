@@ -2,21 +2,25 @@
 
 require '../assets/services/db.php';
 
-// Hachage du mot de passe
-$pass_hache = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
+if (!empty($_POST)){
+    // Hachage du mot de passe
+    $pass_hache = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
-// Insertion
-$req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, gender, active, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :gender, :active, :experience, :rank, :permissions_level, CURDATE())');
-$req->execute(array(
-    'username' => $_POST['username'],
-    'pwd' => $_POST['pwd'],
-    'firstname' => $_POST['firstname'],
-    'lastname' => $_POST['lastname'],
-    'gender' => $_POST['gender'],
-    'active' => $_POST['active'],
-    'experience' => $_POST['experience'],
-    'rank' => $_POST['rank'],
-    'permissions_level' => $_POST['permissions_level']));
+    // Insertion
+    $req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, gender, active, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :gender, :active, :experience, :rank, :permissions_level, CURDATE())');
+    $req->execute(array(
+        'username' => $_POST['username'],
+        'pwd' => $pass_hache,
+        'firstname' => $_POST['firstname'],
+        'lastname' => $_POST['lastname'],
+        'gender' => $_POST['gender'],
+        'activeInactive' => $_POST['activeInactive'],
+        'experience' => $_POST['experience'],
+        'rank' => $_POST['rank'],
+        'permissions_level' => $_POST['permissions_level']));
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +65,8 @@ $req->execute(array(
                 <label for="experience">Experience :</label>
                     <input name="experience" for="experience" type="text">
                     <br>
-                <label for="perm">Permission Level 0 - 5 (For access to admin panel = 5) :</label>
-                    <input name="perm" min="0" max="5" for="perm" type="number">
+                <label for="permissions_level">Permission Level 0 - 5 (For access to admin panel = 5) :</label>
+                    <input name="permissions_level" min="0" max="5" for="permissions_level" type="number">
                     <br>
                 <label for="activeInactive">Active or Inactive :</label>
                 <select name="activeInactive" id="activeInactive">
