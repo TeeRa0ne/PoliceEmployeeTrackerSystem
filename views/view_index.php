@@ -4,7 +4,7 @@
 
  if (!empty($_POST)) {
     var_dump($_POST);
-    //  Récupération de l'utilisateur et de son pass hashé
+    
     $req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']));

@@ -1,6 +1,5 @@
 <?php
 
-require '../controllers/search-controller.php';
 require '../assets/services/db.php';
 
 
@@ -29,24 +28,24 @@ $reponse->execute(array($_GET['permissions_level']));
                 session_start();
                 if($_SESSION['username'] !== ""){
                     $user = $_SESSION['username'];
-                    echo "$user";
+                    echo $user;
                 }
             ?></p>
         </div>
         <?php if ($donnee['permission_level'] = 5) {
-            
             ?>
         <div><a href="../views/adminpanel">Admin Panel</a></div>
         <?php } ?>
     </header>
     <hr>
     <div class="background">
+    <a href="../controllers/logout.php">Logout</a>
         <div class="container">
             <h2>Employee Police Database</h2>
             <form method="post">
                 <div class="form1">
-                    <label for="nameuser">Search By Name :</label>
-                    <input for="nameuser" name="nameuser" type="text">
+                    <label for="searchnameuser">Search By Name :</label>
+                    <input for="searchnameuser" name="searchnameuser" type="text">
                     <br>
                     <label for="rank">Search By Rank :</label>
                     <input for="rank" name="rank" type="text">
