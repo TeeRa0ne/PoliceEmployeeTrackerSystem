@@ -7,8 +7,6 @@ $reponse = $bdd->prepare('SELECT permissions_level FROM users WHERE id=?');
 $reponse->execute(array($_GET['permissions_level']));
 
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -24,18 +22,12 @@ $reponse->execute(array($_GET['permissions_level']));
         <div class="header1">
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
-            <p>Access Granted - <?php
-                session_start();
-                if($_SESSION['username'] !== ""){
-                    $user = $_SESSION['username'];
-                    echo $user;
-                }
-            ?></p>
-        </div>
-        <?php if ($donnee['permission_level'] = 5) {
+            <p>Access Granted</p>
+            <?php if ($donnee['permissions_level'] = 5) {
             ?>
-        <div><a href="../views/adminpanel">Admin Panel</a></div>
-        <?php } ?>
+                <div><a href="../views/adminpanel">Admin Panel</a></div>
+            <?php } ?>
+        </div>
     </header>
     <hr>
     <div class="background">

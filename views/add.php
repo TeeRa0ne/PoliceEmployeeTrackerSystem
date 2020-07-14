@@ -3,17 +3,17 @@
 require '../assets/services/db.php';
 
 if (!empty($_POST)){
+    var_dump($_POST);
     // Hachage du mot de passe
     $pass_hache = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
     // Insertion
-    $req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, gender, active, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :gender, :active, :experience, :rank, :permissions_level, CURDATE())');
+    $req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, active, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :active, :experience, :rank, :permissions_level, CURDATE())');
     $req->execute(array(
         'username' => $_POST['username'],
         'pwd' => $pass_hache,
         'firstname' => $_POST['firstname'],
         'lastname' => $_POST['lastname'],
-        'gender' => $_POST['gender'],
         'activeInactive' => $_POST['activeInactive'],
         'experience' => $_POST['experience'],
         'rank' => $_POST['rank'],
@@ -29,7 +29,7 @@ if (!empty($_POST)){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add employee - Police Employee Tracker System</title>
-    <link rel="stylesheet" href="../assets/css/adminpanel.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/adminpanel.css?<?php echo time(); ?>" >
 </head>
 <body>
     <header class="global">
@@ -43,7 +43,7 @@ if (!empty($_POST)){
     </header>
     <hr>
     <div class="container">
-        <button onclick=window.location.href='../views/view_search.php'; class="button-submit-back"> <- Back </button>
+        <button onclick=window.location.href='../views/adminpanel.php'; class="button-submit-back"> <- Back </button>
     <h2>Administration Panel</h2>
         <div>
             <form action="" method="post">
@@ -73,14 +73,6 @@ if (!empty($_POST)){
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
-                <br>
-                <div class="gender">
-                    <label for="gender">Select gender :</label>  
-                        <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Male</label>
-                        <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Female</label>
-                </div>
                 <button class="button-submit" type="submit" value="submit">Add employee</button>
             </form>
         </div>

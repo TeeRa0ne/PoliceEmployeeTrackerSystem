@@ -1,9 +1,29 @@
 <?php
 
 require '../assets/services/db.php';
+require '../views/delete.php';
 
-$reponse = $bdd->prepare('SELECT first_name, last_name, rank FROM users ORDER BY last_name');
+$reponse = $bdd->prepare('SELECT id, first_name, last_name, rank FROM users');
 $reponse->execute();
+
+if (isset($_GET['id'])) {
+    
+    include '../assets/services/db.php';
+    $id = htmlentities($bdd->quote($_GET['id']));
+
+    $delete = $bdd->prepare("DELETE FROM users WHERE id=$id");
+    $delete->execute();
+
+    if ($delete) {
+        echo '<p class="message-delete">User has been delete</p>';
+        header('Location:../views/adminpanel.php');
+
+    }
+    else{
+        $message = "Error.";
+    }
+
+}
 
 ?>
 
@@ -39,17 +59,20 @@ $reponse->execute();
             <?php
                 while ($data = $reponse->fetch()) 
                 {
-                    echo '<div class="box-name">'.'<p>'. $data['first_name'] . '</p>'. 
+                   echo '<div class="box-name">'.
+                   '<p>'. $data['first_name'] . '</p>'. 
                     '<p>' . $data['last_name'] . '</p>' 
                     . '<p>' . $data['rank'] . '</p>' .
                     '<div class="icons-admin">
                     <i class="fas fa-user-cog"></i>
-                    <i style="color: red;" class="fas fa-times"></i>
-                    </div>'. '</div>';
+                    <a id="Popup" href="adminpanel.php?id='.$data['id'].'"><i style="color: red;" class="fas fa-times"></i></a>
+                    </div>'.'</div>';
                 }
             ?>
+            
             </div>
         </div>
     </div>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
