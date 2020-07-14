@@ -1,7 +1,6 @@
 <?php
 
 require '../assets/services/db.php';
-require '../views/delete.php';
 
 $reponse = $bdd->prepare('SELECT id, first_name, last_name, rank FROM users');
 $reponse->execute();

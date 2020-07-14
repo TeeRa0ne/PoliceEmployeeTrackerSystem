@@ -19,6 +19,8 @@ if (!empty($_POST)){
         'rank' => $_POST['rank'],
         'permissions_level' => $_POST['permissions_level']));
 
+}else{
+    echo 'Field is empty.';
 }
 
 ?>

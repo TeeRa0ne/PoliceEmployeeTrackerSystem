@@ -143,7 +143,6 @@ p{
 }
 
 .box-employee{
-    background-color: rgba(48, 48, 48, 0.466);
     display: flex;
     justify-content: space-around;
 }
