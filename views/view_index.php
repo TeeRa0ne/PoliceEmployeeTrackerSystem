@@ -1,33 +1,34 @@
 <?php
+ 
  require '../assets/services/db.php';
 
 
  if (!empty($_POST)) {
     var_dump($_POST);
-    
+
     $req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']));
     $resultat = $req->fetch(PDO::FETCH_ASSOC);
+    
+    $isPasswordCorrect = password_verify($_POST['pwd'], $resultat['pwd']);
+
 
     if (!$resultat)
     {
-        $error =  '<p>Wrong password or username.</p>';
+        header('Location: view_index.php?erreur=1');
     }
     else
     {
-        $isPasswordCorrect = password_verify($_POST['pwd'], $resultat['pwd']);
         if ($isPasswordCorrect) {
             session_start();
             $_SESSION['id'] = $resultat['id'];
             $_SESSION['username'] = $username;
-            echo 'You are connected !';
-            sleep(5);
             header('Location:../views/view_search.php');
         }
         else {
-            $error =  '<p>Wrong password or username.</p>';
-            }
+            header('Location: view_index.php?erreur=2'); 
+        }
     }
 }
 
@@ -73,11 +74,11 @@
                 <button class="button-submit" type="submit" value="submit">Connect to the database</button>
             </div>
             <?php
-            if (isset($_GET['error'])) {
-                
-                echo $error1;
-            }
-               
+                if(isset($_GET['erreur'])){
+                    $err = $_GET['erreur'];
+                    if($err==1 || $err==2)
+                        echo "<p>Wrong username or password</p>";
+                }
             ?>
             </form>   
         </div>

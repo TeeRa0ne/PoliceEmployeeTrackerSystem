@@ -2,13 +2,9 @@
 
 
 
-/* For change the background */
-html{
-    background-image: url(../img/6Ya1Nyb.png);
-}
-
-
 body{
+    background-image: url(../img/6Ya1Nyb.png); /* For change the background here */  
+   
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
 }
