@@ -1,33 +1,35 @@
 <?php
+ 
  require '../assets/services/db.php';
 
-var_dump($_POST['username']);
 
- if (isset($_POST)) {
-    //  Récupération de l'utilisateur et de son pass hashé
+ if (!empty($_POST)) {
+    var_dump($isPasswordCorrect);
+
     $req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']));
     $resultat = $req->fetch(PDO::FETCH_ASSOC);
 
+    $isPasswordCorrect = password_verify($_POST['pwd'], $resultat['pwd']);
+
+
     if (!$resultat)
     {
-        $error1 =  '<p>Wrong password or username.</p>';
+        header('Location: view_index.php?erreur=1');
     }
     else
     {
-        $isPasswordCorrect = password_verify($_POST['pwd'], $resultat['pwd']);
         if ($isPasswordCorrect) {
             session_start();
             $_SESSION['id'] = $resultat['id'];
-            $_SESSION['username'] = $_POST['username'];
-            echo 'You are connected !';
-            sleep(5);
+            $_SESSION['username'] = $username;
             header('Location:../views/view_search.php');
+            die();
         }
         else {
-            $error2 =  '<p>Wrong password or username.</p>';
-            }
+            header('Location: view_index.php?erreur=2'); 
+        }
     }
 }
 
@@ -73,7 +75,11 @@ var_dump($_POST['username']);
                 <button class="button-submit" type="submit" value="submit">Connect to the database</button>
             </div>
             <?php
-                echo $error1;
+                if(isset($_GET['erreur'])){
+                    $err = $_GET['erreur'];
+                    if($err==1 || $err==2)
+                        echo "<p>Wrong username or password</p>";
+                }
             ?>
             </form>   
         </div>
