@@ -20,7 +20,7 @@ var_dump($_POST['username']);
         if ($isPasswordCorrect) {
             session_start();
             $_SESSION['id'] = $resultat['id'];
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $_POST['username'];
             echo 'You are connected !';
             sleep(5);
             header('Location:../views/view_search.php');
