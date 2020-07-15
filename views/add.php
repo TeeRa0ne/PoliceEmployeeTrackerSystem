@@ -3,21 +3,21 @@
 require '../assets/services/db.php';
 
 if (!empty($_POST)){
-    var_dump($_POST);
     // Hachage du mot de passe
     $pass_hache = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
     // Insertion
-    $req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, active, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :active, :experience, :rank, :permissions_level, CURDATE())');
+    $req = $bdd->prepare('INSERT INTO users(id, username, pwd, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(NULL, :username, :pwd, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level, CURDATE())');
     $req->execute(array(
         'username' => $_POST['username'],
         'pwd' => $pass_hache,
-        'firstname' => $_POST['firstname'],
-        'lastname' => $_POST['lastname'],
-        'activeInactive' => $_POST['activeInactive'],
+        'first_name' => $_POST['firstname'],
+        'last_name' => $_POST['lastname'],
+        'activeinactive' => $_POST['activeinactive'],
         'experience' => $_POST['experience'],
         'rank' => $_POST['rank'],
         'permissions_level' => $_POST['permissions_level']));
+        echo 'User has been add';
 
 }else{
     echo 'Field is empty.';
@@ -70,8 +70,8 @@ if (!empty($_POST)){
                 <label for="permissions_level">Permission Level 0 - 5 (For access to admin panel = 5) :</label>
                     <input name="permissions_level" min="0" max="5" for="permissions_level" type="number">
                     <br>
-                <label for="activeInactive">Active or Inactive :</label>
-                <select name="activeInactive" id="activeInactive">
+                <label for="activeinactive">Active or Inactive :</label>
+                <select name="activeinactive" id="activeinactive">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
