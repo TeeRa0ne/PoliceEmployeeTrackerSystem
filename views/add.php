@@ -17,7 +17,7 @@ if (!empty($_POST)){
         'experience' => $_POST['experience'],
         'rank' => $_POST['rank'],
         'permissions_level' => $_POST['permissions_level']));
-        echo 'User has been add';
+
 
 }else{
     echo 'Field is empty.';
@@ -48,7 +48,7 @@ if (!empty($_POST)){
         <button onclick=window.location.href='../views/adminpanel.php'; class="button-submit-back"> <- Back </button>
     <h2>Administration Panel</h2>
         <div>
-            <form action="" method="post">
+            <form action="../views/adminpanel.php" method="post">
                 <label for="username">Username (login) :</label>
                     <input name="username" for="username" type="text">
                     <br>

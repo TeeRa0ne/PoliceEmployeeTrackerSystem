@@ -28,15 +28,14 @@ $reponse->execute();
             <p>Access Granted - <?php $data = $reponse->fetch(); if(isset($_SESSION['username'])) { 
                 echo $data['first_name'] . $data['last_name'] . '-' . $data['rank'] ;}
                 ?></p>
-            <div><a href="../views/adminpanel">Admin Panel</a></div>
+
         </div>
     </header>
     <hr>
     <div class="background">
-        <a href="../controllers/logout.php">Logout</a>
         <div class="container">
             <h2>Employee Police Database</h2>
-            <form method="post">
+            <form action="../views/result.php" method="post">
                 <div class="form1">
                     <label for="searchnameuser">Search By Name :</label>
                     <input for="searchnameuser" name="searchnameuser" type="text">
@@ -47,6 +46,11 @@ $reponse->execute();
                 <button class="button-submit-search" type="submit">Search</button>
             </form>
         </div>
+    </div>
+    <div class="logout-admin">
+        <a class="admin-panel-button" href="../views/adminpanel">Admin Panel</a>
+        <br>
+        <a class="logout-button" href="../controllers/logout.php">Logout</a>
     </div>
 </body>
 
