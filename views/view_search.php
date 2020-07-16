@@ -21,7 +21,7 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Searchname")
  }
  else
  {
-  $message = "Vous devez entrer votre requete dans la barre de recherche";
+  $message = "You need to place your search in input";
  }
 }
 
@@ -52,15 +52,15 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Searchname")
     <div class="background">
         <div class="container">
             <h2>Employee Police Database</h2>
-            <form action="../views/result.php" method="post">
+            <form action="../views/result.php" method="get">
                 <div class="form1">
                     <label for="searchnameuser">Search By Name :</label>
-                    <input for="searchnameuser" name="searchnameuser" type="search">
+                    <input for="searchnameuser" name="searchnameuser" type="search" value="Search">
                     <br>
                     <label for="byrank">Search By Rank :</label>
                     <input for="byrank" name="rank" type="search">
                 </div>
-                <button class="button-submit-search" type="submit">Search</button>
+                <button class="button-submit-search" name="s" type="submit">Search</button>
             </form>
         </div>
     </div>
