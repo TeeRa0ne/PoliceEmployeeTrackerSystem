@@ -9,14 +9,14 @@ if (!empty($_POST)){
     // Insertion
     $req = $bdd->prepare('INSERT INTO users(id, username, pwd, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(NULL, :username, :pwd, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level)');
     $req->execute(array(
-        ':username' => $_POST['username'],
-        ':pwd' => $pass_hache,
-        ':first_name' => $_POST['firstname'],
-        ':last_name' => $_POST['lastname'],
-        ':activeinactive' => $_POST['activeinactive'],
-        ':experience' => $_POST['experience'],
-        ':rank' => $_POST['rank'],
-        ':permissions_level' => $_POST['permissions_level']));
+        'username' => $_POST['username'],
+        'pwd' => $pass_hache,
+        'first_name' => $_POST['firstname'],
+        'last_name' => $_POST['lastname'],
+        'activeinactive' => $_POST['activeinactive'],
+        'experience' => $_POST['experience'],
+        'rank' => $_POST['rank'],
+        'permissions_level' => $_POST['permissions_level']));
         echo 'User has been add';
 
 }

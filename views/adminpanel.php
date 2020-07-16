@@ -5,24 +5,6 @@ require '../assets/services/db.php';
 $reponse = $bdd->prepare('SELECT id, first_name, last_name, rank FROM users');
 $reponse->execute();
 
-if (isset($_GET['id'])) {
-    
-    include '../assets/services/db.php';
-    $id = htmlentities($bdd->quote($_GET['id']));
-
-    $delete = $bdd->prepare("DELETE FROM users WHERE id=$id");
-    $delete->execute();
-
-    if ($delete) {
-        echo '<p class="message-delete">User has been delete</p>';
-        header('Location:../views/adminpanel.php');
-
-    }
-    else{
-        $message = "Error.";
-    }
-
-}
 
 ?>
 
