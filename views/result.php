@@ -3,7 +3,7 @@
 require '../assets/services/db.php';
 
 
-$reponse = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank FROM users');
+$reponse = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users');
 $reponse->execute();
 
 
@@ -35,7 +35,19 @@ $reponse->execute();
     <div class="background">
         <div class="container">
             <h2>Employee Police Database</h2>
-
+            <div class="box-employee">
+            <?php
+                while ($data = $reponse->fetch()) 
+                {
+                   echo '<div class="box-name">'.
+                   '<p>'. $data['first_name'] . '</p>'. 
+                    '<p>' . $data['last_name'] . '</p>' 
+                    . '<p>' . $data['rank'] . '</p>' .
+                    '<p>' . $data['activeinactive'] . '</p>' .
+                    '</div>'.'</div>';
+                }
+            ?>
+            </div>
         </div>
     </div>
     <div class="logout-admin">

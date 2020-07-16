@@ -3,14 +3,14 @@
 require '../assets/services/db.php';
 
 if (!empty($_POST)){
-    // Hachage du mot de passe
-    $pass_hache = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
+    // Hash password
+    $pass_hash = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
     // Insertion
     $req = $bdd->prepare('INSERT INTO users(id, username, pwd, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(NULL, :username, :pwd, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level)');
     $req->execute(array(
         'username' => $_POST['username'],
-        'pwd' => $pass_hache,
+        'pwd' => $pass_hash,
         'first_name' => $_POST['firstname'],
         'last_name' => $_POST['lastname'],
         'activeinactive' => $_POST['activeinactive'],
@@ -62,16 +62,17 @@ if (!empty($_POST)){
                 <label for="rank">Rank :</label>
                     <input name="rank" for="rank" type="text">
                     <br>
-                <label for="experience">Experience :</label>
-                    <input name="experience" for="experience" type="text">
+                <label for="experience">Experience / Qualifications :</label>
+                    <textarea style="margin: 0px; width: 575px; height: 127px;" placeholder="Qualification..."  cols="20" rows="3" name="experience" for="experience" type="text">
+                    </textarea>
                     <br>
                 <label for="permissions_level">Permission Level 0 - 5 (For access to admin panel = 5) :</label>
                     <input name="permissions_level" min="0" max="5" for="permissions_level" type="number">
                     <br>
                 <label for="activeinactive">Active or Inactive :</label>
                 <select name="activeinactive" id="activeinactive">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
                 </select>
                 <button class="button-submit" type="submit" value="submit">Add employee</button>
             </form>

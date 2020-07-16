@@ -4,7 +4,6 @@
 
 
  if (!empty($_POST)) {
-    var_dump($isPasswordCorrect);
 
     $req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
     $req->execute(array(
