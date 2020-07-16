@@ -3,8 +3,9 @@
 require '../assets/services/db.php';
 
 
-$reponse = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users');
-$reponse->execute();
+
+// $reponse = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users');
+// $reponse->execute();
 
 
 

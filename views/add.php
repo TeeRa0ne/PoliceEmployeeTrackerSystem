@@ -7,7 +7,7 @@ if (!empty($_POST)){
     $pass_hash = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
     // Insertion
-    $req = $bdd->prepare('INSERT INTO users(id, username, pwd, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(NULL, :username, :pwd, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level)');
+    $req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level)');
     $req->execute(array(
         'username' => $_POST['username'],
         'pwd' => $pass_hash,
@@ -17,7 +17,7 @@ if (!empty($_POST)){
         'experience' => $_POST['experience'],
         'rank' => $_POST['rank'],
         'permissions_level' => $_POST['permissions_level']));
-        echo 'User has been add';
+        echo 'User has been added !';
 
 }
 

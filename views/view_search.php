@@ -42,7 +42,7 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Searchname")
         <div class="header1">
             <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
-            <p>Access Granted - <?php $data = $reponse->fetch(); if(isset($_SESSION['username'])) { 
+            <p class="paccess">Access Granted - <?php $data = $reponse->fetch(); if(isset($_SESSION['username'])) { 
                 echo $data['first_name'] . $data['last_name'] . '-' . $data['rank'] ;}
                 ?></p>
 
@@ -52,16 +52,29 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Searchname")
     <div class="background">
         <div class="container">
             <h2>Employee Police Database</h2>
-            <form action="../views/result.php" method="get">
+            <form action="../views/view_search.php" method="get">
                 <div class="form1">
                     <label for="searchnameuser">Search By Name :</label>
-                    <input for="searchnameuser" name="searchnameuser" type="search" value="Search">
-                    <br>
+                    <input for="searchnameuser" name="searchnameuser" type="search" placeholder="Name">
+                    <!-- <br>
                     <label for="byrank">Search By Rank :</label>
-                    <input for="byrank" name="rank" type="search">
+                    <input for="byrank" name="rank" type="search" placeholder="Rank"> -->
                 </div>
-                <button class="button-submit-search" name="s" type="submit">Search</button>
+                <button class="button-submit-search" name="Searchname" type="submit">Search</button>
             </form>
+            <div class="box-employee">
+            <?php
+                while ($data = $searchnameuser->fetch()) 
+                {
+                   echo '<div class="box-name">'.
+                   '<p>'. $data['first_name'] . '</p>'. 
+                    '<p>' . $data['last_name'] . '</p>' 
+                    . '<p>' . $data['rank'] . '</p>' .
+                    '<p>' . $data['activeinactive'] . '</p>' .
+                    '</div>'.'</div>';
+                }
+            ?>
+            </div>
         </div>
     </div>
     <div class="logout-admin">
