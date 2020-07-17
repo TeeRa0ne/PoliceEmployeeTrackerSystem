@@ -64,15 +64,15 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Searchname")
             </form>
             <div class="box-employee">
             <?php
-                while ($data = $searchnameuser->fetch()) 
-                {
-                   echo '<div class="box-name">'.
-                   '<p>'. $data['first_name'] . '</p>'. 
-                    '<p>' . $data['last_name'] . '</p>' 
-                    . '<p>' . $data['rank'] . '</p>' .
-                    '<p>' . $data['activeinactive'] . '</p>' .
-                    '</div>'.'</div>';
-                }
+                // while ($data = $searchnameuser->fetch()) 
+                //{
+                //    echo '<div class="box-name">'.
+                //    '<p>'. $data['first_name'] . '</p>'. 
+                //     '<p>' . $data['last_name'] . '</p>' 
+                //     . '<p>' . $data['rank'] . '</p>' .
+                //     '<p>' . $data['activeinactive'] . '</p>' .
+                //     '</div>'.'</div>';
+                // }
             ?>
             </div>
         </div>

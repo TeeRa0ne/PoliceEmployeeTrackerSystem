@@ -154,3 +154,13 @@ p{
     width: 90px;
     border: 2px solid white;
 }
+
+.alert-user{
+    color: white;
+    background-color: rgb(56, 172, 61);
+    text-shadow: 0 1px 0 white;
+    border-radius: 3px;
+    padding: 5px 10px;
+    border: 1px solid #DDD;
+    margin-left: 10px;
+}

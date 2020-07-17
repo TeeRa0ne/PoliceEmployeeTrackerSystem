@@ -17,7 +17,14 @@ if (!empty($_POST)){
         'experience' => $_POST['experience'],
         'rank' => $_POST['rank'],
         'permissions_level' => $_POST['permissions_level']));
-        echo 'User has been added !';
+
+        if ($req) {
+            $text ='<p class="alert-user">User has been added !</p>';
+        }else{
+            $text ='<p class="alert-user-bad">The user has not be added</p>';
+        }
+
+
 
 }
 
@@ -45,8 +52,11 @@ if (!empty($_POST)){
     <div class="container">
         <button onclick=window.location.href='../views/adminpanel.php'; class="button-submit-back"> <- Back </button>
     <h2>Administration Panel</h2>
+    <?php
+        echo $text ;
+    ?>
         <div>
-            <form action="../views/adminpanel.php" method="post">
+            <form action="" method="post">
                 <label for="username">Username (login) :</label>
                     <input name="username" for="username" type="text">
                     <br>
