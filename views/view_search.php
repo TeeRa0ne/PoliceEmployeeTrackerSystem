@@ -25,6 +25,8 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Searchname")
  }
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +82,7 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Searchname")
     <div class="logout-admin">
         <a class="admin-panel-button" href="../views/adminpanel">Admin Panel</a>
         <br>
-        <a class="logout-button" href="../controllers/logout.php">Logout</a>
+        <a class="logout-button" href="../controllers/logout">Logout</a>
     </div>
 </body>
 

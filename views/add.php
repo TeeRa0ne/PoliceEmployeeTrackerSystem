@@ -44,7 +44,7 @@ if (!empty($_POST)){
         <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
             <div>
-                <p>Administrator</p>
+                <p class="danger">Administrator</p>
             </div>
         </div>
     </header>
@@ -81,8 +81,8 @@ if (!empty($_POST)){
                     <br>
                 <label for="activeinactive">Active or Inactive :</label>
                 <select name="activeinactive" id="activeinactive">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
                 </select>
                 <button class="button-submit" type="submit" value="submit">Add employee</button>
             </form>
