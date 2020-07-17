@@ -37,7 +37,6 @@ hr {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     background-color: rgba(48, 48, 48, 0.466);
     color: white;
     text-align: center;
@@ -151,8 +150,8 @@ p{
 
 .box-name{
     padding: 5px;
-    width: 90px;
     border: 2px solid white;
+    border-radius: 10px;
 }
 
 .alert-user{

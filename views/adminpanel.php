@@ -63,8 +63,8 @@ if (isset($_GET['id'])) {
                     '<p>' . $data['last_name'] . '</p>' 
                     . '<p>' . $data['rank'] . '</p>' .
                     '<div class="icons-admin">
-                    <i class="fas fa-user-cog"></i>
-                    <a id="Popup" href="adminpanel.php?id='.$data['id'].'"><i style="color: red;" class="fas fa-times"></i></a>
+                    <a href="edit.php?id='.$data['id'].'"><i class="fas fa-user-cog"></i></a>
+                    <a href="adminpanel.php?id='.$data['id'].'"><i style="color: red;" class="fas fa-times"></i></a>
                     </div>'.'</div>';
                 }
             ?>
