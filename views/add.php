@@ -20,12 +20,12 @@ if (!empty($_POST)){
 
         if ($req) {
             $text ='<p class="alert-user">User has been added !</p>';
-        }else{
-            $text ='<p class="alert-user-bad">The user has not be added</p>';
         }
 
 
 
+}else{
+    $text ='<p class="alert-user-bad">The user has not be added</p>';
 }
 
 ?>
