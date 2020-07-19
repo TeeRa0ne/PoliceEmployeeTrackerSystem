@@ -61,8 +61,7 @@ if ($userExist = 1)
             </form>
             <div class="box-employee">
             <?php
-            if (isset($_GET)) {
-                if ($user) {
+                if (isset($user)) {
                 while ($data = $user->fetch()) 
                 {
                    echo
@@ -73,8 +72,6 @@ if ($userExist = 1)
                     '<p>' . $data['activeinactive'] . '</p>' .
                     '</div>'.'</div>';
                 }
-            }
-            
             }
             
             ?>
