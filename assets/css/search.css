@@ -66,10 +66,7 @@ hr{
 
 form{
     display: flex;
-    flex-direction: column;
-    padding-bottom: 150px;
-    padding-left: 100px;
-    padding-right: 100px; 
+    margin: auto;
 
 }
 
@@ -132,4 +129,16 @@ a{
     justify-content: flex-end;
     margin-top: 30px;
     margin-right: 10px;
+}
+
+.box-name{
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+
+.box-employee{
+    display: flex;
+    justify-content: space-around;
 }

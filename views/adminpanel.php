@@ -14,7 +14,6 @@ if (isset($_GET['id'])) {
 
     if ($delete) {
         echo '<p class="message-delete">User has been delete</p>';
-        header('Location:../views/adminpanel.php');
 
     }
     else{
@@ -22,6 +21,8 @@ if (isset($_GET['id'])) {
     }
 
 }
+
+
 
 
 ?>
