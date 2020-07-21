@@ -3,7 +3,7 @@
 require '../assets/services/db.php';
 
 
-$reponse = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank FROM users');
+$reponse = $bdd->prepare('SELECT id, username, first_name, last_name , permissions_level, rank FROM users');
 $reponse->execute();
 
 if (!empty($_GET)) {
@@ -16,6 +16,7 @@ if (!empty($_GET)) {
 if ($userExist = 1) 
 {
     $userinfo = $reponse->fetch();
+    $_SESSION['id'] = $userinfo['id'];
     $_SESSION['username'] = $userinfo['username'];
     $_SESSION['first_name'] = $userinfo['first_name'];
     $_SESSION['last_name'] = $userinfo['last_name'];

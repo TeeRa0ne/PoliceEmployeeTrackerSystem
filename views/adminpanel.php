@@ -2,7 +2,7 @@
 
 require '../assets/services/db.php';
 
-$reponse = $bdd->prepare('SELECT id, first_name, last_name, rank FROM users');
+$reponse = $bdd->prepare('SELECT id, username, first_name, last_name, rank FROM users');
 $reponse->execute();
 
 if (isset($_GET['id'])) {
@@ -23,7 +23,14 @@ if (isset($_GET['id'])) {
 }
 
 
+if (isset($_GET['username'])) {
 
+    $username = htmlentities($bdd->quote($_GET['username']));
+
+    $select = $bdd->prepare("SELECT username FROM users WHERE username=$username");
+    $select->execute();
+
+}
 
 ?>
 
@@ -64,7 +71,7 @@ if (isset($_GET['id'])) {
                     '<p>' . $data['last_name'] . '</p>' 
                     . '<p>' . $data['rank'] . '</p>' .
                     '<div class="icons-admin">
-                    <a href="edit.php?id='.$data['id'].'"><i class="fas fa-user-cog"></i></a>
+                    <a href="edit.php?id='.$data['username'].'"><i class="fas fa-user-cog"></i></a>
                     <a href="adminpanel.php?id='.$data['id'].'"><i style="color: red;" class="fas fa-times"></i></a>
                     </div>'.'</div>';
                 }
@@ -73,6 +80,5 @@ if (isset($_GET['id'])) {
             </div>
         </div>
     </div>
-    <script src="../assets/js/script.js"></script>
 </body>
 </html>

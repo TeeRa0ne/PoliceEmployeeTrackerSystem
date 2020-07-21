@@ -2,26 +2,39 @@
 
 require '../assets/services/db.php';
 
-$reponse = $bdd->prepare('SELECT id, first_name, last_name, rank FROM users');
-$reponse->execute();
 
-if (isset($_GET['id'])) {
+if (isset($_SESSION['id'])) {
+    
 
-    $id = htmlentities($bdd->quote($_GET['id']));
+if ($_SESSION['id']) {
+    $reponse = $bdd->prepare('SELECT id, first_name, last_name, rank, activeinactive, experience, permission_level FROM users');
+    $response->execute(array(
+        'username' => $_GET['username'],
+        'first_name' => $_GET['firstname'],
+        'last_name' => $_GET['lastname'],
+        'activeinactive' => $_GET['activeinactive'],
+        'experience' => $_GET['experience'],
+        'rank' => $_GET['rank'],
+        'permissions_level' => $_GET['permissions_level']));
 
-    $delete = $bdd->prepare("DELETE FROM users WHERE id=$id");
-    $delete->execute();
+        $valueusername = "username";
+        $valuefirst_name = "firstname";
+        $valuelast_name = "lastname";
+        $valueactiveinactive = "activeinactive";
+        $valueexperience = "experience";
+        $valuerank = "rank";
+        $valuepermissions_level = "permissions_level";
 
-    if ($delete) {
-        echo '<p class="message-delete">User has been delete</p>';
-        header('Location:../views/adminpanel.php');
-
-    }
-    else{
-        $message = "Error.";
-    }
+        if (isset($_POST)) {
+    
+            $req2 = $bdd->prepare('UPDATE INTO users SET ');
+        }
+        
+                
 
 }
+}
+
 
 
 ?>
@@ -47,9 +60,34 @@ if (isset($_GET['id'])) {
         </div>
     </header>
     <hr>
-    <div class="container">
     <button onclick=window.location.href='../views/view_search.php'; class="button-submit-back"> <- Back </button>
-
-    </div>
+    <form action="adminpanel.php" method="post">
+        <label for="username">Username (login) :</label>
+            <input name="username" for="username" type="text" value="<?php echo $valueusername ?>">
+            <br>
+        <label for="pwd">Password (login) :</label>
+            <input name="pwd" for="pwd" type="password">
+            <br>
+        <label for="firstname">First name of employee :</label>
+            <input name="firstname" for="firstname" type="text">
+            <br>
+        <label for="lastname">Last name of employee :</label>
+            <input name="lastname" for="firstname" type="text">
+            <br>
+        <label for="rank">Rank :</label>
+            <input name="rank" for="rank" type="text">
+            <br>
+        <label for="experience">Experience / Qualifications :</label>
+            <textarea style="margin: 0px; width: 575px; height: 127px;" placeholder="Qualification..."  cols="20" rows="3" name="experience" for="experience" type="text">
+            </textarea>
+            <br>
+        <label for="permissions_level">Permission Level 0 - 5 (For access to admin panel = 5) :</label>
+            <input name="permissions_level" min="0" max="5" for="permissions_level" type="number">
+            <br>
+        <label for="activeinactive">Active or Inactive :</label>
+        <select name="activeinactive" id="activeinactive">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
 </body>
 </html>
