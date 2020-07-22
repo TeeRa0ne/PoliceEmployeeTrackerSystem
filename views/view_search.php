@@ -33,6 +33,8 @@ if (isset($_SESSION['id'])) {
     exit;
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +52,7 @@ if (isset($_SESSION['id'])) {
         <div class="header1">
             <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
-            <p class="paccess">Access Granted</p>
+            <p class="paccess">Access Granted - <?php echo $_SESSION['last_name'] . ' ' . $_SESSION['first_name'] . ' / ' . $_SESSION['rank'];   ?></p>
 
         </div>
     </header>
@@ -88,7 +90,7 @@ if (isset($_SESSION['id'])) {
         </div>
     </div>
     <div class="logout-admin">
-    <?php if ($perm['permssions_level'] = 5) {?>
+    <?php if ($_SESSION['permissions_level'] == 5) {?>
         <a class="admin-panel-button" href="../views/adminpanel">Admin Panel</a>
     <?php } ?>
         <br>

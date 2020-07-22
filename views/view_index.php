@@ -5,7 +5,7 @@
 
  if (!empty($_POST)) {
 
-    $req = $bdd->prepare('SELECT id, pwd FROM users WHERE username = :username');
+    $req = $bdd->prepare('SELECT id, pwd, permissions_level FROM users WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']));
     $resultat = $req->fetch(PDO::FETCH_ASSOC);
@@ -23,7 +23,7 @@
             session_start();
             $_SESSION['id'] = $resultat['id'];
             $_SESSION['username'] = $username['username'];
-            $_SESSION['permissions_level'] = $perm['permissions_level'];
+            $_SESSION['permissions_level'] = $resultat['permissions_level'];
             header('Location:../views/view_search.php');
             die();
         }
@@ -32,6 +32,7 @@
         }
     }
 }
+
 
 ?>
 
