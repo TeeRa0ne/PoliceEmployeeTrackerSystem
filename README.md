@@ -12,8 +12,7 @@ A Police website for control police employee of FiveM
 ### Result Page
 ![Result](https://i.imgur.com/cVwLwlV.png)
 
-- **If you fork this, you won't get updates.** 
-    - **Consider Starring instead if you don't want to make a contribution.**
+- **Web Site for Hunter Johnes** 
     
 
 
