@@ -5,7 +5,7 @@
 
  if (!empty($_POST)) {
 
-    $req = $bdd->prepare('SELECT id, pwd, permissions_level FROM users WHERE username = :username');
+    $req = $bdd->prepare('SELECT id, username, pwd, permissions_level, first_name, last_name, rank FROM users WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']));
     $resultat = $req->fetch(PDO::FETCH_ASSOC);
@@ -22,7 +22,10 @@
         if ($isPasswordCorrect) {
             session_start();
             $_SESSION['id'] = $resultat['id'];
-            $_SESSION['username'] = $username['username'];
+            $_SESSION['username'] = $resultat['username'];
+            $_SESSION['last_name'] = $resultat['last_name'];
+            $_SESSION['first_name'] = $resultat['first_name'];
+            $_SESSION['rank'] = $resultat['rank'];
             $_SESSION['permissions_level'] = $resultat['permissions_level'];
             header('Location:../views/view_search.php');
             die();

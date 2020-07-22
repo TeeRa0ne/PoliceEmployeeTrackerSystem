@@ -16,22 +16,12 @@ if (isset($_SESSION['id'])) {
             }
     }
 
-    if ($userExist = 1) 
-    {
-        $userinfo = $reponse->fetch();
-        $_SESSION['id'] = $userinfo['id'];
-        $_SESSION['username'] = $userinfo['username'];
-        $_SESSION['first_name'] = $userinfo['first_name'];
-        $_SESSION['last_name'] = $userinfo['last_name'];
-        $_SESSION['rank'] = $userinfo['rank'];
-
-
-    }
 
 }else{
     header('Location:view_index.php');
     exit;
 }
+
 
 
 
