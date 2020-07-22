@@ -8,6 +8,7 @@ body{
     background-image: url(../img/6Ya1Nyb.png); /* For change the background here */  
    
     margin: 0 auto;
+    margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -59,7 +60,6 @@ hr{
     color: white;
     text-align: center;
     width: 600px;
-    height: 500px;
     margin: 0 auto;
     margin-top: 15px;
 
@@ -83,6 +83,8 @@ hr{
 form{
     display: flex;
     margin: auto;
+    flex-direction: column;
+
 
 }
 
@@ -151,15 +153,19 @@ a{
     padding: 5px;
     border: 2px solid white;
     border-radius: 10px;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
 }
 
 
 .box-employee{
-    display: inline;
+    display: inline-flex;
     text-align: initial;
     padding: 15px;
+    margin-top: 20px;
     background-color: rgba(52, 53, 53, 0.253);
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 .data{

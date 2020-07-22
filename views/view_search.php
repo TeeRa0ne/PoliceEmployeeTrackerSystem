@@ -88,11 +88,11 @@ if (isset($_SESSION['id'])) {
                 {
                    echo
                    '<div class="box-name">'.
-                   '<p>'. $data['first_name'] . '</p>'. 
-                    '<p>' . $data['last_name'] . '</p>' 
-                    . '<p>' . $data['rank'] . '</p>' .
-                    '<p>' . $data['activeinactive'] . '</p>' .
-                    '<a href="profilesearch.php?id='.$data['id'].'"><i class="fas fa-user-alt"></i></a>' .
+                   '<p>'. $data['first_name'] .'&nbsp;' . '</p>'. 
+                    '<p>' . $data['last_name'].'&nbsp;' . '</p>' 
+                    . '<p>' . $data['rank'].'&nbsp;' . '</p>' .
+                    '<p>' . $data['activeinactive'].'&nbsp;' . '</p>' .
+                    '<a style="color: orange;" href="profilesearch.php?id='.$data['id'].'"><i class="fas fa-user-alt"></i></a>' .
                     '</div>';
                 }
             }

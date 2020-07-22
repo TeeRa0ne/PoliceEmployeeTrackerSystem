@@ -45,7 +45,7 @@ if (!$user) {
             <h2>Employee Police Database</h2>
             <div class="box-employee">
             <?php
-                echo '<p class="data">First name : '.
+                echo '<p class="data">First name : '. ' ' .
                    $user['first_name'].'</p>' .
                    '<p class="data">Last name : '.
                    $user['last_name'].'</p>'.

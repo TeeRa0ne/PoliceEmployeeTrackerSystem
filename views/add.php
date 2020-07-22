@@ -20,16 +20,10 @@ if (isset($_SESSION['id'])) {
             'rank' => $_POST['rank'],
             'permissions_level' => $_POST['permissions_level']));
 
-            if ($req) {
-                $text ='<p class="alert-user">User has been added !</p>';
-            }
 
 
-
-    }else{
-        $text ='<p class="alert-user-bad">The user has not be added</p>';
     }
-    
+
 }else{
     header('Location:view_index.php');
     exit;
@@ -59,9 +53,6 @@ if (isset($_SESSION['id'])) {
     <div class="container">
         <button onclick=window.location.href='../views/adminpanel.php'; class="button-submit-back"> <- Back </button>
     <h2>Administration Panel</h2>
-    <?php
-        echo $text ;
-    ?>
         <div>
             <form action="" method="post">
                 <label for="username">Username (login) :</label>
@@ -80,7 +71,7 @@ if (isset($_SESSION['id'])) {
                     <input name="rank" for="rank" type="text">
                     <br>
                 <label for="experience">Experience / Qualifications :</label>
-                    <textarea style="margin: 0px; width: 575px; height: 127px;" placeholder="Qualification..."  cols="20" rows="3" name="experience" for="experience" type="text">
+                    <textarea style="margin: 0px; width: 550px; height: 127px;" placeholder="Qualification..."  cols="20" rows="3" name="experience" for="experience" type="text">
                     </textarea>
                     <br>
                 <label for="permissions_level">Permission Level 0 - 5 (For access to admin panel = 5) :</label>

@@ -2,8 +2,8 @@
 
 body {
     background-image: url(../img/6Ya1Nyb.png); /* For change the background here*/
-
     margin: 0 auto;
+    margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
 }
 .xdebug-var-dump{
@@ -50,10 +50,9 @@ hr {
 form {
     display: flex;
     flex-direction: column;
-    background-color: rgba(48, 48, 48, 0.466);
     color: white;
     text-align: center;
-    width: 600px;
+    width: 550px;
     margin: 0 auto;
     margin-top: 15px;
     padding-bottom: 10px;
