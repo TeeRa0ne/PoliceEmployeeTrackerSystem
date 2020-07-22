@@ -1,28 +1,36 @@
 <?php
 
 require '../assets/services/db.php';
+session_start();
 
 
-$reponse = $bdd->prepare('SELECT id, username, first_name, last_name , permissions_level, rank FROM users');
-$reponse->execute();
+if (isset($_SESSION['id'])) {
 
-if (!empty($_GET)) {
-    if(isset($_GET['q']) AND !empty($_GET['q'])) {
-        $q = htmlspecialchars($_GET['q']);
-        $user = $bdd->query('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$q.'%" ORDER BY id DESC');
-        }
-}
+    $reponse = $bdd->prepare('SELECT id, username, first_name, last_name , permissions_level, rank FROM users');
+    $reponse->execute();
 
-if ($userExist = 1) 
-{
-    $userinfo = $reponse->fetch();
-    $_SESSION['id'] = $userinfo['id'];
-    $_SESSION['username'] = $userinfo['username'];
-    $_SESSION['first_name'] = $userinfo['first_name'];
-    $_SESSION['last_name'] = $userinfo['last_name'];
-    $_SESSION['rank'] = $userinfo['rank'];
+    if (!empty($_GET)) {
+        if(isset($_GET['q']) AND !empty($_GET['q'])) {
+            $q = htmlspecialchars($_GET['q']);
+            $user = $bdd->query('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$q.'%" ORDER BY id DESC');
+            }
+    }
+
+    if ($userExist = 1) 
+    {
+        $userinfo = $reponse->fetch();
+        $_SESSION['id'] = $userinfo['id'];
+        $_SESSION['username'] = $userinfo['username'];
+        $_SESSION['first_name'] = $userinfo['first_name'];
+        $_SESSION['last_name'] = $userinfo['last_name'];
+        $_SESSION['rank'] = $userinfo['rank'];
 
 
+    }
+
+}else{
+    header('Location:view_index.php');
+    exit;
 }
 
 ?>
@@ -80,7 +88,9 @@ if ($userExist = 1)
         </div>
     </div>
     <div class="logout-admin">
+    <?php if ($perm['permssions_level'] = 5) {?>
         <a class="admin-panel-button" href="../views/adminpanel">Admin Panel</a>
+    <?php } ?>
         <br>
         <a class="logout-button" href="../controllers/logout">Logout</a>
     </div>

@@ -1,35 +1,44 @@
 <?php
 
 require '../assets/services/db.php';
+session_start();
 
-$reponse = $bdd->prepare('SELECT id, username, first_name, last_name, rank FROM users');
-$reponse->execute();
 
-if (isset($_GET['id'])) {
+if (isset($_SESSION['id'])) {
 
-    $id = htmlentities($bdd->quote($_GET['id']));
+    $reponse = $bdd->prepare('SELECT id, username, first_name, last_name, rank FROM users');
+    $reponse->execute();
 
-    $delete = $bdd->prepare("DELETE FROM users WHERE id=$id");
-    $delete->execute();
+    if (isset($_GET['id'])) {
 
-    if ($delete) {
-        echo '<p class="message-delete">User has been delete</p>';
+        $id = htmlentities($bdd->quote($_GET['id']));
+
+        $delete = $bdd->prepare("DELETE FROM users WHERE id=$id");
+        $delete->execute();
+
+        if ($delete) {
+            echo '<p class="message-delete">User has been delete</p>';
+
+        }
+        else{
+            $message = "Error.";
+        }
 
     }
-    else{
-        $message = "Error.";
+
+
+    if (isset($_GET['username'])) {
+
+        $username = htmlentities($bdd->quote($_GET['username']));
+
+        $select = $bdd->prepare("SELECT username FROM users WHERE username=$username");
+        $select->execute();
+
     }
 
-}
-
-
-if (isset($_GET['username'])) {
-
-    $username = htmlentities($bdd->quote($_GET['username']));
-
-    $select = $bdd->prepare("SELECT username FROM users WHERE username=$username");
-    $select->execute();
-
+}else{
+    header('Location:view_index.php');
+    exit;
 }
 
 ?>

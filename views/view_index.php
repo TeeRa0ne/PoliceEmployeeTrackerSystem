@@ -22,7 +22,8 @@
         if ($isPasswordCorrect) {
             session_start();
             $_SESSION['id'] = $resultat['id'];
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $username['username'];
+            $_SESSION['permissions_level'] = $perm['permissions_level'];
             header('Location:../views/view_search.php');
             die();
         }

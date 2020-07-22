@@ -1,31 +1,38 @@
 <?php
 
 require '../assets/services/db.php';
+session_start();
+if (isset($_SESSION['id'])) {
+    
+    if (!empty($_POST)){
+        // Hash password
+        $pass_hash = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
-if (!empty($_POST)){
-    // Hash password
-    $pass_hash = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
+        // Insertion
+        $req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level)');
+        $req->execute(array(
+            'username' => $_POST['username'],
+            'pwd' => $pass_hash,
+            'first_name' => $_POST['firstname'],
+            'last_name' => $_POST['lastname'],
+            'activeinactive' => $_POST['activeinactive'],
+            'experience' => $_POST['experience'],
+            'rank' => $_POST['rank'],
+            'permissions_level' => $_POST['permissions_level']));
 
-    // Insertion
-    $req = $bdd->prepare('INSERT INTO users(username, pwd, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(:username, :pwd, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level)');
-    $req->execute(array(
-        'username' => $_POST['username'],
-        'pwd' => $pass_hash,
-        'first_name' => $_POST['firstname'],
-        'last_name' => $_POST['lastname'],
-        'activeinactive' => $_POST['activeinactive'],
-        'experience' => $_POST['experience'],
-        'rank' => $_POST['rank'],
-        'permissions_level' => $_POST['permissions_level']));
-
-        if ($req) {
-            $text ='<p class="alert-user">User has been added !</p>';
-        }
+            if ($req) {
+                $text ='<p class="alert-user">User has been added !</p>';
+            }
 
 
 
+    }else{
+        $text ='<p class="alert-user-bad">The user has not be added</p>';
+    }
+    
 }else{
-    $text ='<p class="alert-user-bad">The user has not be added</p>';
+    header('Location:view_index.php');
+    exit;
 }
 
 ?>
