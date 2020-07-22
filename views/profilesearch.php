@@ -1,13 +1,18 @@
 <?php
 
 require '../assets/services/db.php';
+session_start();
 
+if (isset($_SESSION['id'])) {
+    
 
+$reponse = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank, activeinactive, experience FROM users');
+$reponse->execute();
 
-// $reponse = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users');
-// $reponse->execute();
-
-
+}else{
+    header('Location:view_index.php');
+    exit;
+}
 
 ?>
 
@@ -26,9 +31,7 @@ require '../assets/services/db.php';
         <div class="header1">
             <img class="logo" src="../assets/img/FBI.png" alt="logo">
             <h1 class="title">Federal Bureau of Investigation</h1>
-            <p>Access Granted - <?php $data = $reponse->fetch(); if(isset($_SESSION['username'])) { 
-                echo $data['first_name'] . $data['last_name'] . '-' . $data['rank'] ;}
-                ?></p>
+            <p class="paccess">Access Granted - <?php echo $_SESSION['last_name'] . ' ' . $_SESSION['first_name'] . ' / ' . $_SESSION['rank'];   ?></p>
 
         </div>
     </header>
@@ -40,12 +43,17 @@ require '../assets/services/db.php';
             <?php
                 while ($data = $reponse->fetch()) 
                 {
-                   echo '<div class="box-name">'.
-                   '<p>'. $data['first_name'] . '</p>'. 
-                    '<p>' . $data['last_name'] . '</p>' 
-                    . '<p>' . $data['rank'] . '</p>' .
-                    '<p>' . $data['activeinactive'] . '</p>' .
-                    '</div>'.'</div>';
+                   echo '<p>First name :</p>'.
+                   $data['first_name'] .
+                   '<p>Last name :</p>'.
+                   $data['last_name'].
+                   '<p>Rank :</p>'.
+                   $data['rank'].
+                   '<p>Active or Inactive :</p>'.
+                   $data['activeinactive'].
+                   '<p>Experience / Qualification :</p>'.
+                   $data['experience']
+                   ;
                 }
             ?>
             </div>

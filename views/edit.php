@@ -3,31 +3,36 @@
 require '../assets/services/db.php';
 session_start();
 
-if (isset($_SESSION['id'])) {
-    
-
-if ($_SESSION['id']) {
-    $reponse = $bdd->prepare('SELECT id, first_name, last_name, rank, activeinactive, experience, permission_level FROM users');
-    $response->execute(array(
-        'username' => $_GET['username'],
-        'first_name' => $_GET['firstname'],
-        'last_name' => $_GET['lastname'],
-        'activeinactive' => $_GET['activeinactive'],
-        'experience' => $_GET['experience'],
-        'rank' => $_GET['rank'],
-        'permissions_level' => $_GET['permissions_level']));
-
-        if (isset($_POST)) {
-    
-            $req2 = $bdd->prepare('UPDATE INTO users SET ');
-        }
-        
-                
-
-}
-}else{
-    header('Location:view_index.php');
+if (!isset($_SESSION['id'])) {
+	header('Location: view_index.php');
     exit;
+}
+
+if (!isset($_GET['username']) || empty($_GET['username'])) {
+	header('Location: view_index.php');
+    exit;
+}
+
+$req = $bdd->prepare('SELECT * FROM users WHERE username = ?');
+$req->execute([$_GET['username']]);
+$user = $req->fetch();
+
+if (!$user) {
+	header('Location: view_index.php');
+    exit;
+}
+
+if (isset($_POST['submit'])) {
+	$req = $bdd->prepare('UPDATE INTO users(username, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(:username, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level)');
+	$req->execute(array(
+		'username' => $_POST['username'],
+		'first_name' => $_POST['firstname'],
+		'last_name' => $_POST['lastname'],
+		'activeinactive' => $_POST['activeinactive'],
+		'experience' => $_POST['experience'],
+		'rank' => $_POST['rank'],
+		'permissions_level' => $_POST['permissions_level']
+	));	
 }
 
 
@@ -58,32 +63,30 @@ if ($_SESSION['id']) {
     <button onclick=window.location.href='../views/view_search.php'; class="button-submit-back"> <- Back </button>
     <form action="adminpanel.php" method="post">
         <label for="username">Username (login) :</label>
-            <input name="username" for="username" type="text" value="<?php echo $valueusername ?>">
-            <br>
-        <label for="pwd">Password (login) :</label>
-            <input name="pwd" for="pwd" type="password">
+            <input name="username" for="username" type="text" value="<?= $user['username'] ?>">
             <br>
         <label for="firstname">First name of employee :</label>
-            <input name="firstname" for="firstname" type="text">
+            <input name="firstname" for="firstname" type="text" value="<?= $user['first_name'] ?>">
             <br>
         <label for="lastname">Last name of employee :</label>
-            <input name="lastname" for="firstname" type="text">
+            <input name="lastname" for="firstname" type="text" value="<?= $user['last_name'] ?>">
             <br>
         <label for="rank">Rank :</label>
-            <input name="rank" for="rank" type="text">
+            <input name="rank" for="rank" type="text" value="<?= $user['rank'] ?>">
             <br>
         <label for="experience">Experience / Qualifications :</label>
             <textarea style="margin: 0px; width: 575px; height: 127px;" placeholder="Qualification..."  cols="20" rows="3" name="experience" for="experience" type="text">
-            </textarea>
+				<?= $user['experience'] ?>
+			</textarea>
             <br>
         <label for="permissions_level">Permission Level 0 - 5 (For access to admin panel = 5) :</label>
-            <input name="permissions_level" min="0" max="5" for="permissions_level" type="number">
+            <input name="permissions_level" min="0" max="5" for="permissions_level" type="number" value="<?= $user['permissions_level'] ?>">
             <br>
         <label for="activeinactive">Active or Inactive :</label>
         <select name="activeinactive" id="activeinactive">
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
+            <option value="yes" <?php if ($user['activeinactive'] == "yes") echo "selected"; ?>>Active</option>
+            <option value="no" <?php if ($user['activeinactive'] == "no") echo "selected"; ?>>Inactive</option>
         </select>
-
+        <button class="button-submit" type="submit" value="submit">Edit employee</button>
 </body>
 </html>

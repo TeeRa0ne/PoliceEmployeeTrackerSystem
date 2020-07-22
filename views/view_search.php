@@ -22,9 +22,17 @@ if (isset($_SESSION['id'])) {
             $user = $bdd->query('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$r.'%" ORDER BY id DESC');
             }
     }else{
-        if ($userNotExist) {
             $messageError = 'The user has not been found';
         }
+    
+
+    if (isset($_GET['id'])) {
+
+        $id = htmlentities($bdd->quote($_GET['id']));
+
+        $select = $bdd->prepare("SELECT id FROM users WHERE id=$id");
+        $select->execute();
+
     }
 
 
@@ -82,7 +90,7 @@ if (isset($_SESSION['id'])) {
                     '<p>' . $data['last_name'] . '</p>' 
                     . '<p>' . $data['rank'] . '</p>' .
                     '<p>' . $data['activeinactive'] . '</p>' .
-                    '<a href="#"><i class="fas fa-user-cog"></a>' .
+                    '<a href="profilesearch.php?id='.$data['id'].'"><i class="fas fa-user-alt"></i></a>' .
                     '</div>';
                 }
             }
