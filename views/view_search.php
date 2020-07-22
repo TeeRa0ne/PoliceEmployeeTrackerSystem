@@ -5,21 +5,19 @@ session_start();
 
 
 if (isset($_SESSION['id'])) {
-
-    $reponse = $bdd->prepare('SELECT id, username, first_name, last_name , permissions_level, rank FROM users');
-    $reponse->execute();
-
+    //Search Bar 1
     if (!empty($_GET)) {
         if(isset($_GET['q']) AND !empty($_GET['q'])) {
             $q = htmlspecialchars($_GET['q']);
-            $user = $bdd->query('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$q.'%" ORDER BY id DESC');
+            $user = $bdd->query('SELECT id, username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$q.'%" ORDER BY id DESC');
             }
     }
-    
+
+    //Search Bar 2
     if (!empty($_GET)) {
         if(isset($_GET['r']) AND !empty($_GET['r'])) {
             $r = htmlspecialchars($_GET['r']);
-            $user = $bdd->query('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$r.'%" ORDER BY id DESC');
+            $user = $bdd->query('SELECT id, username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$r.'%" ORDER BY id DESC');
             }
     }else{
             $messageError = 'The user has not been found';
@@ -36,10 +34,12 @@ if (isset($_SESSION['id'])) {
     }
 
 
+
 }else{
     header('Location:view_index.php');
     exit;
 }
+
 
 
 
@@ -54,6 +54,8 @@ if (isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search - Police Employee System</title>
     <link rel="stylesheet" href="../assets/css/search.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/Fontawesome/css/all.css"> 
+    <script defer src="../assets/Fontawesome/js/all.js"></script>
 </head>
 
 <body>

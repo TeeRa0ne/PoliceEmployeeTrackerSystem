@@ -3,14 +3,17 @@
 require '../assets/services/db.php';
 session_start();
 
-if (isset($_SESSION['id'])) {
-    
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    header('Location: view_index.php');
+    exit;
+}
 
-$reponse = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank, activeinactive, experience FROM users');
-$reponse->execute();
+$response = $bdd->prepare('SELECT username, first_name, last_name , permissions_level, rank, activeinactive, experience FROM users WHERE id = ?');
+$response->execute([$_GET['id']]);
+$user = $response->fetch(); 
 
-}else{
-    header('Location:view_index.php');
+if (!$user) {
+    header('Location: view_index.php');
     exit;
 }
 
@@ -38,23 +41,21 @@ $reponse->execute();
     <hr>
     <div class="background">
         <div class="container">
+        <button onclick=window.location.href='../views/view_search.php'; class="button-submit-back"> <- Back </button>
             <h2>Employee Police Database</h2>
             <div class="box-employee">
             <?php
-                while ($data = $reponse->fetch()) 
-                {
-                   echo '<p>First name :</p>'.
-                   $data['first_name'] .
-                   '<p>Last name :</p>'.
-                   $data['last_name'].
-                   '<p>Rank :</p>'.
-                   $data['rank'].
-                   '<p>Active or Inactive :</p>'.
-                   $data['activeinactive'].
-                   '<p>Experience / Qualification :</p>'.
-                   $data['experience']
+                echo '<p class="data">First name : '.
+                   $user['first_name'].'</p>' .
+                   '<p class="data">Last name : '.
+                   $user['last_name'].'</p>'.
+                   '<p class="data">Rank : '.
+                   $user['rank'].'</p>'.
+                   '<p class="data">Active or Inactive : '.
+                   $user['activeinactive'].'</p>'.
+                   '<p class="data">Experience / Qualification : <br>'.
+                   $user['experience'].'</p>'
                    ;
-                }
             ?>
             </div>
         </div>
