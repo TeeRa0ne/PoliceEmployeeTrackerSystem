@@ -3,8 +3,6 @@
 require '../assets/services/db.php';
 session_start();
 
-
-
 if (isset($_SESSION['id'])) {
     
 
@@ -18,14 +16,6 @@ if ($_SESSION['id']) {
         'experience' => $_GET['experience'],
         'rank' => $_GET['rank'],
         'permissions_level' => $_GET['permissions_level']));
-
-        $valueusername = "username";
-        $valuefirst_name = "firstname";
-        $valuelast_name = "lastname";
-        $valueactiveinactive = "activeinactive";
-        $valueexperience = "experience";
-        $valuerank = "rank";
-        $valuepermissions_level = "permissions_level";
 
         if (isset($_POST)) {
     
@@ -94,5 +84,6 @@ if ($_SESSION['id']) {
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
         </select>
+
 </body>
 </html>

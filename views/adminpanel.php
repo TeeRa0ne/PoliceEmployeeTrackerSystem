@@ -17,7 +17,7 @@ if (isset($_SESSION['id'])) {
         $delete->execute();
 
         if ($delete) {
-            echo '<p class="message-delete">User has been delete</p>';
+            header('Location:adminpanel.php');
 
         }
         else{
@@ -80,7 +80,7 @@ if (isset($_SESSION['id'])) {
                     '<p>' . $data['last_name'] . '</p>' 
                     . '<p>' . $data['rank'] . '</p>' .
                     '<div class="icons-admin">
-                    <a href="edit.php?id='.$data['username'].'"><i class="fas fa-user-cog"></i></a>
+                    <a href="edit.php?username='.$data['username'].'"><i class="fas fa-user-cog"></i></a>
                     <a href="adminpanel.php?id='.$data['id'].'"><i style="color: red;" class="fas fa-times"></i></a>
                     </div>'.'</div>';
                 }

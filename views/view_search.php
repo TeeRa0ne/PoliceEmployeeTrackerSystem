@@ -82,6 +82,7 @@ if (isset($_SESSION['id'])) {
                     '<p>' . $data['last_name'] . '</p>' 
                     . '<p>' . $data['rank'] . '</p>' .
                     '<p>' . $data['activeinactive'] . '</p>' .
+                    '<a href="#"><i class="fas fa-user-cog"></a>' .
                     '</div>';
                 }
             }
