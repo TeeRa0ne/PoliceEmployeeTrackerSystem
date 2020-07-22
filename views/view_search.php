@@ -15,6 +15,17 @@ if (isset($_SESSION['id'])) {
             $user = $bdd->query('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$q.'%" ORDER BY id DESC');
             }
     }
+    
+    if (!empty($_GET)) {
+        if(isset($_GET['r']) AND !empty($_GET['r'])) {
+            $r = htmlspecialchars($_GET['r']);
+            $user = $bdd->query('SELECT username, first_name, last_name , permissions_level, rank, activeinactive FROM users WHERE CONCAT(first_name, last_name, rank, activeinactive) LIKE "%'.$r.'%" ORDER BY id DESC');
+            }
+    }else{
+        if ($userNotExist) {
+            $messageError = 'The user has not been found';
+        }
+    }
 
 
 }else{
@@ -54,9 +65,9 @@ if (isset($_SESSION['id'])) {
                 <div class="form1">
                     <label for="q">Search By Name :</label>
                     <input for="q" name="q" type="search" placeholder="Search...">
-                    <!-- <br>
-                    <label for="byrank">Search By Rank :</label>
-                    <input for="byrank" name="rank" type="search" placeholder="Rank"> -->
+                    <br>
+                    <label for="r">Search By Rank :</label>
+                    <input for="r" name="r" type="search" placeholder="Search...">
                 </div>
                 <button class="button-submit-search" type="submit">Search</button>
             </form>
@@ -71,10 +82,9 @@ if (isset($_SESSION['id'])) {
                     '<p>' . $data['last_name'] . '</p>' 
                     . '<p>' . $data['rank'] . '</p>' .
                     '<p>' . $data['activeinactive'] . '</p>' .
-                    '</div>'.'</div>';
+                    '</div>';
                 }
             }
-            
             ?>
             </div>
         </div>
