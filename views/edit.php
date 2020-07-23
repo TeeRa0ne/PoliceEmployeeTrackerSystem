@@ -23,21 +23,22 @@ if (!$user) {
 }
 
 if (isset($_POST['submit'])) {
-	$req = $bdd->prepare('UPDATE INTO users(username, first_name, last_name, activeinactive, experience, rank, permissions_level) VALUES(:username, :first_name, :last_name, :activeinactive, :experience, :rank, :permissions_level)');
+	$req = $bdd->prepare('UPDATE users SET username=?, first_name=?, last_name=?, activeinactive=?, experience=?, `rank`=?, permissions_level=? WHERE id=?');
 	$req->execute(array(
-		'username' => $_POST['username'],
-		'first_name' => $_POST['firstname'],
-		'last_name' => $_POST['lastname'],
-		'activeinactive' => $_POST['activeinactive'],
-		'experience' => $_POST['experience'],
-		'rank' => $_POST['rank'],
-		'permissions_level' => $_POST['permissions_level']
-	));	
+		$_POST['username'],
+		$_POST['firstname'],
+		$_POST['lastname'],
+		$_POST['activeinactive'],
+		$_POST['experience'],
+		$_POST['rank'],
+		$_POST['permissions_level'],
+                $user['id']
+	));
+        header("Refresh:0");
+        exit;
 }
-
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +62,8 @@ if (isset($_POST['submit'])) {
     </header>
     <hr>
     <button onclick=window.location.href='../views/view_search.php'; class="button-submit-back"> <- Back </button>
+    <div class="container">
+    <h2>Employee Polcie DataBase</h2>
     <form action="adminpanel.php" method="post">
         <label for="username">Username (login) :</label>
             <input name="username" for="username" type="text" value="<?= $user['username'] ?>">
@@ -88,5 +91,6 @@ if (isset($_POST['submit'])) {
             <option value="no" <?php if ($user['activeinactive'] == "no") echo "selected"; ?>>Inactive</option>
         </select>
         <button class="button-submit" type="submit" value="submit">Edit employee</button>
+    </div>
 </body>
 </html>
