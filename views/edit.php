@@ -22,8 +22,8 @@ if (!$user) {
     exit;
 }
 
-if (isset($_POST['submit'])) {
-	$req = $bdd->prepare('UPDATE users SET username=?, first_name=?, last_name=?, activeinactive=?, experience=?, `rank`=?, permissions_level=? WHERE id=?');
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+	$req = $bdd->prepare('UPDATE INTO users SET username=?, first_name=?, last_name=?, activeinactive=?, experience=?, `rank`=?, permissions_level=? WHERE id=?');
 	$req->execute(array(
 		$_POST['username'],
 		$_POST['firstname'],
@@ -37,7 +37,12 @@ if (isset($_POST['submit'])) {
         header("Refresh:0");
         exit;
 }
+
+
+
 ?>
+?>
+
 
 
 <!DOCTYPE html>
