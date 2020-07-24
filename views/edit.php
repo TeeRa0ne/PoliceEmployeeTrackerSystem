@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$_POST['rank'],
 		$_POST['permissions_level'],
                 $user['id']
-	));
+    ));
         header("Refresh:0");
         exit;
 }
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <button onclick=window.location.href='../views/view_search.php'; class="button-submit-back"> <- Back </button>
     <div class="container">
     <h2>Employee Polcie DataBase</h2>
-    <form action="adminpanel.php" method="post">
+    <form action="edit.php" method="post">
         <label for="username">Username (login) :</label>
             <input name="username" for="username" type="text" value="<?= $user['username'] ?>">
             <br>
