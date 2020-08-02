@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result - Police Employee System</title>
+    <link rel="stylesheet" href="../assets/css/search.css">
+</head>
+
+<body>
+<header>
+    <div class="header1">
+        <img class="logo" src="../assets/img/FBI.png" alt="logo">
+        <h1 class="title">Federal Bureau of Investigation</h1>
+        <p class="paccess">Access Granted - {{ last_name }} - {{ first_name }} / {{ rank }}</p>
+
+    </div>
+</header>
+<hr>
+<div class="background">
+    <div class="container">
+        <button onclick=window.location.href='/index.php'; class="button-submit-back"> <- Back </button>
+        <h2>Employee Police Database</h2>
+        <div class="box-employee">
+            <p class="data">First name : {{ _first_name }}</p>
+            <p class="data">Last name : {{ _last_name }} </p>
+            <p class="data">Rank : {{ _rank }}</p>
+            <p class="data">Status : {{ _status }}</p>
+            <p class="data">Experience / Qualification : <br> {{ _experience }}
+        </div>
+    </div>
+</div>
+<div class="logout-admin">
+    {{ admin_panel }}
+    <br>
+    <a class="logout-button" href="logout.php">Logout</a>
+</div>
+</body>
+
+</html>
