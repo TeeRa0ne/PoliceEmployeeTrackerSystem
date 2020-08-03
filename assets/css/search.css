@@ -162,6 +162,8 @@ a{
     display: inline-flex;
     text-align: initial;
     padding: 15px;
+    margin: 15px;
+    border: 1px black solid;
     margin-top: 20px;
     background-color: rgba(52, 53, 53, 0.253);
     justify-content: space-around;
