@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add employee - Police Employee Tracker System</title>
+    <link type="text/css" rel="stylesheet" href="./assets/css/adminpanel.css" >
+</head>
+<body>
+<header class="global">
+    <div class="header1">
+        <img class="logo" src="./assets/img/FBI.png" alt="logo">
+        <h1 class="title">Federal Bureau of Investigation</h1>
+        <div>
+            <p class="danger">Administrator</p>
+        </div>
+    </div>
+</header>
+<hr>
+<div class="container">
+    <button onclick=window.location.href='admin.php'; class="button-submit-back"> <- Back </button>
+    <h2>Administration Panel</h2>
+    <div>
+        <form action="" method="post">
+            <label for="username">Username (login) :</label>
+            <input name="username" for="username" type="text">
+            <br>
+            <label for="pwd">Password (login) :</label>
+            <input name="pwd" for="pwd" type="password">
+            <br>
+            <label for="firstname">First name of employee :</label>
+            <input name="firstname" for="firstname" type="text">
+            <br>
+            <label for="lastname">Last name of employee :</label>
+            <input name="lastname" for="lastname" type="text">
+            <br>
+            <label for="rank">Rank :</label>
+            <input name="rank" for="rank" type="text">
+            <br>
+            <label for="experience">Experience / Qualifications :</label>
+            <textarea style="margin: 0px; width: 550px; height: 127px;" placeholder="Qualification..."  cols="20" rows="3" name="experience" for="experience" type="text"></textarea>
+            <br>
+            <label for="permissions_level">Permission Level 0 - 5 (For access to admin panel = 5) :</label>
+            <input name="permissions_level" min="0" max="5" for="permissions_level" type="number">
+            <br>
+            <label for="activeinactive">Active or Inactive :</label>
+            <select name="status" id="status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+            <button class="button-submit" type="submit" value="submit">Add employee</button>
+            {{ message }}
+        </form>
+    </div>
+</div>
+</body>
+</html>
